@@ -201,7 +201,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   --sk-kraft: #3f5fe0; --sk-kraft-ink: #f3f5ff; --sk-sticky: #f1d35a; --sk-redpen: #c8452f; --sk-bluepen: #2f56c4;
   --sk-hand: "Kalam", "Patrick Hand", cursive;
 }
-.sk-shelf { display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px 28px; }
+.sk-shelf { display: grid; grid-template-columns: repeat(2, 1fr); gap: 76px 28px; }
 .sk-stage { width: min(440px, 100%); margin: 0 auto; perspective: 1900px; }
 .sk-stage-sm { width: 100%; max-width: 340px; margin: 0 auto; perspective: 1700px; }
 @media (max-width: 640px) { .sk-shelf { grid-template-columns: 1fr; } }
