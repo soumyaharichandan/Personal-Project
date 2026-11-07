@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Soumya Ranjan Harichandan, a Lead/Staff Product Designer based in Bengaluru and Hyderabad.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -68,11 +68,19 @@
     <section id="work">
       <div class="wrap">
         <div class="sec-head reveal"><div><span class="label">Selected work</span><h2>Work I'm proud of</h2></div><a href="#work">View all work →</a></div>
-        <div class="cases reveal">
-          <a href="case-1.html"><span class="label"><span class="tag">9 min read</span></span><h3>I redesigned how analysts collaborate with AI during investigations.</h3><span class="go">↗</span></a>
-          <a href="case-2.html"><span class="label"><span class="tag">3 min read</span></span><h3>How UX design unlocked $5,000 in credits for partners.</h3><span class="go">↗</span></a>
-          <a href="case-3.html"><span class="label"><span class="tag">2 min read</span></span><h3>How a new UI kit made dark mode and white-labeling possible.</h3><span class="go">↗</span></a>
-          <a href="case-4.html"><span class="label"><span class="tag">2 min read</span></span><h3>How I turned a 5-hour reporting workflow into 45 minutes.</h3><span class="go">↗</span></a>
+        <div class="sk-root reveal">
+          <div class="sk-stage">
+            <div class="sk-book" id="skBook">
+              <div class="sk-stack"></div>
+              <div class="sk-spiral" id="skSpiral" aria-hidden="true"></div>
+              <div class="sk-pages" id="skPages"></div>
+            </div>
+          </div>
+          <div class="sk-controls">
+            <button type="button" id="skPrev" aria-label="previous page">‹ prev</button>
+            <span class="sk-where" id="skWhere" aria-live="polite">cover</span>
+            <button type="button" id="skNext" aria-label="next page">next ›</button>
+          </div>
         </div>
       </div>
     </section>
