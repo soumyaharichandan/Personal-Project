@@ -82,8 +82,8 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .intro h2 .h2-line2 { display: inline-block; margin-top: 14px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; letter-spacing: normal; color: var(--muted); }
 .intro p { font-size: clamp(17px, 1.8vw, 20px); margin-bottom: 20px; }
 .intro p.dim { color: var(--muted); }
-.intro .more { display: inline-flex; align-items: center; margin-top: 8px; font-family: var(--sans); font-weight: 600; font-size: 19px; border-bottom: 2px solid var(--accent); color: var(--fg); padding-bottom: 2px; transition: color .2s; }
-.intro .more:hover { color: var(--accent); }
+.intro .more { display: inline-flex; align-items: center; margin-top: 8px; font-family: var(--sans); font-weight: 600; font-size: 19px; border-bottom: 2px solid var(--muted); color: var(--fg); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+.intro .more:hover { color: var(--muted); border-color: var(--fg); }
 .intro .more .arrow { display: inline-block; margin-left: 8px; transition: transform .2s; }
 .intro .more:hover .arrow { transform: translateX(5px); }
 
