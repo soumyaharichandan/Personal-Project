@@ -231,7 +231,11 @@ if (canvas) {
       pages.forEach((p, i) => {
         p.classList.toggle('flipped', i < idx);
         p.classList.toggle('active', i === idx);
-        p.style.zIndex = i < idx ? i : 100 - i;
+        // the cover (page 0) is a physical flap sitting on top of the project
+        // page underneath it — keep that stacking constant in both directions
+        // so the cover's own flip (handled by its front/back faces) is what's
+        // visible, instead of the page below popping on top mid-rotation
+        p.style.zIndex = pages.length - i;
         p.inert = i !== idx;
       });
     }
