@@ -109,7 +109,7 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
   filter: drop-shadow(1px 3px 2px rgba(13,36,74,.35));
 }
 .sticky-note-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.sticky-note-icon { font-size: 20px; background: #e3ecfb; border-radius: 10px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sticky-note-icon { font-size: 20px; background: #cddef7; border: 1px solid rgba(13,36,74,.12); box-shadow: 0 2px 5px rgba(13,36,74,.15); border-radius: 10px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .sticky-note-head h3 { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; color: #16305c; font-weight: 600; }
 .sticky-note-list { list-style: none; }
 .sticky-note-list li { font-family: 'Patrick Hand', cursive; font-weight: 400; font-size: 23px; color: #122a4d; line-height: 1.7; }
