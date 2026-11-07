@@ -223,7 +223,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-plain { background: #fff; }
 
 /* cover */
-.sk-cover .sk-face.front { background: var(--sk-paper); cursor: pointer; }
+.sk-cover .sk-face.front { background: #fff; cursor: pointer; }
 .sk-cover .sk-inner { padding: 11cqw 0 0; }
 .sk-cover-top { display: flex; justify-content: space-between; align-items: flex-start; padding: 0 7cqw; }
 .sk-brand { display: grid; gap: .4cqw; }
