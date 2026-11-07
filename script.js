@@ -249,7 +249,7 @@ if (canvas) {
       document.body.classList.add('sk-modal-open');
       overlay.classList.add('show');
       void stage.offsetWidth; // force reflow before animating to target
-      const targetW = Math.min(500, innerWidth * 0.85, (innerHeight - 80) * (6.8 / 8.3));
+      const targetW = Math.min(560, innerWidth * 0.88, (innerHeight - 64) * (6.8 / 8.3));
       const targetH = targetW * (8.3 / 6.8);
       const targetLeft = (innerWidth - targetW) / 2;
       const targetTop = Math.max(16, (innerHeight - targetH) / 2);
