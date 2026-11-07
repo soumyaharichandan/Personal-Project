@@ -98,7 +98,7 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .sticky-note-icon { font-size: 20px; background: #f6c445; border-radius: 10px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .sticky-note-head h3 { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; color: #4a3c00; font-weight: 600; }
 .sticky-note-list { list-style: none; }
-.sticky-note-list li { font-family: 'Caveat', cursive; font-weight: 600; font-size: 25px; color: #3a2e00; line-height: 1.6; }
+.sticky-note-list li { font-family: var(--sans); font-weight: 500; font-size: 16px; color: #3a2e00; line-height: 2; }
 
 /* Work list */
 .cases a { display: grid; grid-template-columns: 120px 1fr 40px; gap: 24px; align-items: center; padding: 28px 0; border-top: 1px solid var(--line); transition: padding .3s; }
