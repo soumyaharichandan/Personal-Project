@@ -40,7 +40,7 @@ if (canvas) {
   };
   const draw = (t) => {
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = getComputedStyle(root).getPropertyValue('--fg');
+    ctx.fillStyle = '#0d0d0d';
     for (const d of dots) {
       const tx = d.ox + Math.sin(t / 2000 + d.p) * 6, ty = d.oy + Math.cos(t / 2300 + d.p) * 6;
       const dx = d.x - mouse.x, dy = d.y - mouse.y, dist = Math.hypot(dx, dy);
@@ -58,4 +58,15 @@ if (canvas) {
   canvas.parentElement.addEventListener('pointerleave', () => { mouse = { x: -999, y: -999 }; });
   addEventListener('resize', size);
   size(); requestAnimationFrame(draw);
+
+  // Custom ring cursor over the hero
+  const cur = document.createElement('div');
+  cur.className = 'hero-cursor';
+  document.body.appendChild(cur);
+  canvas.parentElement.addEventListener('pointerenter', () => cur.classList.add('show'));
+  canvas.parentElement.addEventListener('pointerleave', () => cur.classList.remove('show'));
+  canvas.parentElement.addEventListener('pointermove', (e) => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top = e.clientY + 'px';
+  });
 }
