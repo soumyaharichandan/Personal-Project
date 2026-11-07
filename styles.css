@@ -82,7 +82,7 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .intro h2 .h2-line2 { display: inline-block; margin-top: 14px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; letter-spacing: normal; color: var(--muted); }
 .intro p { font-size: clamp(15px, 1.6vw, 18px); font-weight: 300; margin-bottom: 20px; color: var(--muted); }
 .intro p.dim { color: var(--muted); }
-.intro .more { display: inline-flex; align-items: center; margin-top: 8px; font-family: var(--sans); font-weight: 600; font-size: 19px; color: var(--muted); padding-bottom: 4px; position: relative; transition: color .2s; }
+.intro .more { display: inline-flex; align-items: center; margin-top: 8px; font-family: var(--sans); font-weight: 600; font-size: 16px; color: var(--muted); padding-bottom: 4px; position: relative; transition: color .2s; }
 .intro .more::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: #333c52; transition: width .3s ease; }
 .intro .more:hover { color: #333c52; }
 .intro .more:hover::after { width: 100%; }
