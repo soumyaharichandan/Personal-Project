@@ -150,7 +150,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 
 /* About */
 .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; padding-bottom: 96px; }
-.portrait { aspect-ratio: 4/5; background: linear-gradient(160deg, var(--card), color-mix(in srgb, var(--accent) 25%, var(--card))); border: 1px solid var(--line); }
+.portrait { aspect-ratio: 4/5; width: 100%; object-fit: cover; background: linear-gradient(160deg, var(--card), color-mix(in srgb, var(--accent) 25%, var(--card))); border: 1px solid var(--line); border-radius: 8px; }
 .about-grid p { font-size: clamp(18px, 2vw, 22px); margin-bottom: 20px; }
 .about-grid p.dim { color: var(--muted); font-size: 17px; }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; }
