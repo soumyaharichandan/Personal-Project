@@ -211,7 +211,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-pages { position: absolute; inset: 0; z-index: 2; }
 .sk-page { position: absolute; inset: 0; transform-origin: 50% 0; transform-style: preserve-3d; transition: transform .95s cubic-bezier(.45,.02,.2,1), opacity .12s linear; }
 .sk-page.flipped { transform: rotateX(178deg); opacity: 0; pointer-events: none; transition: transform .95s cubic-bezier(.45,.02,.2,1), opacity .25s linear .62s; }
-.sk-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; background: var(--sk-paper); color: var(--sk-graphite); border-radius: .6cqw .6cqw 1cqw 1cqw; box-shadow: inset 0 0 0 1px rgba(0,0,0,.05); }
+.sk-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; background: #faf8f3; color: var(--sk-graphite); border-radius: .6cqw .6cqw 1cqw 1cqw; box-shadow: inset 0 0 0 1px rgba(0,0,0,.05); }
 .sk-face.back { transform: rotateX(180deg); background: var(--sk-paper-back); }
 .sk-holes { position: absolute; top: 3.4cqw; left: 7%; right: 7%; display: flex; justify-content: space-between; pointer-events: none; }
 .sk-holes i { width: 1.9cqw; height: 1.9cqw; border-radius: 50%; background: var(--sk-desk); box-shadow: inset 0 .3cqw .4cqw rgba(0,0,0,.6); }
