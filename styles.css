@@ -196,11 +196,10 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 
 /* Sketchbook — "work I'm proud of" */
 .sk-root {
-  --sk-desk: #111319; --sk-paper: #f4f2ed; --sk-paper-back: #e4e0d6; --sk-edge: #d6d1c4;
+  --sk-desk: var(--bg); --sk-paper: #f4f2ed; --sk-paper-back: #e4e0d6; --sk-edge: #d6d1c4;
   --sk-graphite: #3a3a3e; --sk-pencil: #7a7a80; --sk-tape: rgba(214,196,150,.82);
   --sk-kraft: #3f5fe0; --sk-kraft-ink: #f3f5ff; --sk-sticky: #f1d35a; --sk-redpen: #c8452f; --sk-bluepen: #2f56c4;
   --sk-hand: "Kalam", "Patrick Hand", cursive;
-  background: var(--sk-desk); border-radius: 20px; padding: 36px 20px 28px;
 }
 .sk-shelf { display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px 28px; }
 .sk-stage { width: min(440px, 100%); margin: 0 auto; perspective: 1900px; }
