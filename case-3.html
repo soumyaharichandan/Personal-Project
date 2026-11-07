@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design system & theming — Soumya Ranjan Harichandan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a href="index.html" class="logo">Soumya <span>Harichandan</span></a>
+      <nav>
+        <a href="index.html#work">Work</a>
+        <a href="notes.html">Notes</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+        <button id="theme" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cs-hero reveal">
+      <p class="eyebrow">Case study · Design system</p>
+      <h1>How a new UI kit made dark mode and white-labeling possible.</h1>
+      <div class="meta">
+        <div><h4>Role</h4><p>Staff Product Designer</p></div>
+        <div><h4>Timeline</h4><p>5 months</p></div>
+        <div><h4>Team</h4><p>3 designers, 6 engineers</p></div>
+        <div><h4>Outcome</h4><p>1 kit, N brands</p></div>
+      </div>
+    </div>
+    <div class="cs-cover reveal" style="background:linear-gradient(135deg,#7c3aed,#f0abfc)"></div>
+    <article class="cs-body">
+      <section class="reveal"><h2>The problem</h2><p>Hard-coded colours and one-off components made theming impossible and slowed every release.</p></section>
+      <section class="reveal"><h2>Approach</h2><p>Audited every component, defined semantic tokens, and migrated product areas in phases.</p>
+        <div class="figure" style="background:var(--card)"></div></section>
+      <section class="reveal"><h2>The solution</h2><p>A token-based kit with light, dark and white-label themes, documented with usage guidance.</p>
+        <div class="figure" style="background:linear-gradient(135deg,#7c3aed,#f0abfc);opacity:.85"></div></section>
+      <section class="reveal"><h2>Results &amp; reflections</h2><p>Dark mode shipped, new brands launched without redesign, and design-to-dev handoff got faster (demo numbers).</p></section>
+    </article>
+  </main>
+  <a class="next" href="case-4.html"><span>Next project</span><strong>Reporting workflow ↗</strong></a>
+  <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
