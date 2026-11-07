@@ -236,7 +236,7 @@ if (canvas) {
       });
     }
 
-    function openModal() {
+    function openModal(onDone) {
       homeRect = stage.getBoundingClientRect();
       cell.style.minHeight = homeRect.height + 'px';
       stage.style.position = 'fixed';
@@ -258,6 +258,8 @@ if (canvas) {
       stage.style.top = targetTop + 'px';
       stage.style.width = targetW + 'px';
       closeActive = () => go(0);
+      // only flip the page open once the zoom-to-center has fully settled
+      if (reduce) onDone(); else stage.addEventListener('transitionend', onDone, { once: true });
     }
 
     function closeModal() {
@@ -282,8 +284,12 @@ if (canvas) {
       target = Math.max(0, Math.min(pages.length - 1, target));
       if (target === idx) return;
       idx = target;
-      paint();
-      if (target === 1) openModal(); else closeModal();
+      if (target === 1) {
+        openModal(paint); // zoom to center first, flip the page open only once that settles
+      } else {
+        paint();
+        closeModal();
+      }
     }
     book.addEventListener('click', e => {
       const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
