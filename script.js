@@ -212,10 +212,21 @@ if (canvas) {
 
   shelf.innerHTML = shelfHTML;
 
-  // each book flips independently between its two pages (cover / project)
+  // dim backdrop behind the book that's currently zoomed to center
+  const overlay = document.createElement('div');
+  overlay.className = 'sk-overlay';
+  document.body.appendChild(overlay);
+  let closeActive = null; // close function of the currently-open book, if any
+
+  // each book flips independently between its two pages (cover / project),
+  // and zooms to the center of the screen while its project page is open
   shelf.querySelectorAll('.sk-book').forEach(book => {
     const pages = [...book.querySelectorAll('.sk-page')];
+    const stage = book.closest('.sk-stage-sm');
+    const cell = book.closest('.sk-cell');
     let idx = 0;
+    let homeRect = null;
+
     function paint() {
       pages.forEach((p, i) => {
         p.classList.toggle('flipped', i < idx);
@@ -224,11 +235,55 @@ if (canvas) {
         p.inert = i !== idx;
       });
     }
+
+    function openModal() {
+      homeRect = stage.getBoundingClientRect();
+      cell.style.minHeight = homeRect.height + 'px';
+      stage.style.position = 'fixed';
+      stage.style.margin = '0';
+      stage.style.zIndex = '1000';
+      stage.style.left = homeRect.left + 'px';
+      stage.style.top = homeRect.top + 'px';
+      stage.style.width = homeRect.width + 'px';
+      stage.classList.add('sk-zoomed');
+      document.body.classList.add('sk-modal-open');
+      overlay.classList.add('show');
+      void stage.offsetWidth; // force reflow before animating to target
+      const targetW = Math.min(440, innerWidth * 0.9);
+      const targetH = targetW * (8.3 / 6.8);
+      const targetLeft = (innerWidth - targetW) / 2;
+      const targetTop = Math.max(16, (innerHeight - targetH) / 2);
+      stage.style.transition = reduce ? 'none' : 'left .45s cubic-bezier(.2,.8,.2,1), top .45s cubic-bezier(.2,.8,.2,1), width .45s cubic-bezier(.2,.8,.2,1)';
+      stage.style.left = targetLeft + 'px';
+      stage.style.top = targetTop + 'px';
+      stage.style.width = targetW + 'px';
+      closeActive = () => go(0);
+    }
+
+    function closeModal() {
+      if (!homeRect) return;
+      overlay.classList.remove('show');
+      document.body.classList.remove('sk-modal-open');
+      stage.style.left = homeRect.left + 'px';
+      stage.style.top = homeRect.top + 'px';
+      stage.style.width = homeRect.width + 'px';
+      const cleanup = () => {
+        stage.style.position = ''; stage.style.margin = ''; stage.style.left = '';
+        stage.style.top = ''; stage.style.width = ''; stage.style.zIndex = ''; stage.style.transition = '';
+        stage.classList.remove('sk-zoomed');
+        cell.style.minHeight = '';
+        homeRect = null;
+      };
+      if (reduce) cleanup(); else stage.addEventListener('transitionend', cleanup, { once: true });
+      closeActive = null;
+    }
+
     function go(target) {
       target = Math.max(0, Math.min(pages.length - 1, target));
       if (target === idx) return;
       idx = target;
       paint();
+      if (target === 1) openModal(); else closeModal();
     }
     book.addEventListener('click', e => {
       const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
@@ -240,4 +295,7 @@ if (canvas) {
     });
     paint();
   });
+
+  overlay.addEventListener('click', () => { if (closeActive) closeActive(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && closeActive) closeActive(); });
 })();

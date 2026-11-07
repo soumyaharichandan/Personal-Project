@@ -204,6 +204,10 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-shelf { display: grid; grid-template-columns: repeat(2, 1fr); gap: 76px 28px; }
 .sk-stage { width: min(440px, 100%); margin: 0 auto; perspective: 1900px; }
 .sk-stage-sm { width: 100%; max-width: 340px; margin: 0 auto; perspective: 1700px; }
+.sk-stage-sm.sk-zoomed { max-width: none; margin: 0; }
+.sk-overlay { position: fixed; inset: 0; background: rgba(8,10,20,.6); opacity: 0; pointer-events: none; transition: opacity .35s; z-index: 900; }
+.sk-overlay.show { opacity: 1; pointer-events: auto; }
+body.sk-modal-open { overflow: hidden; }
 @media (max-width: 640px) { .sk-shelf { grid-template-columns: 1fr; } }
 .sk-book { position: relative; aspect-ratio: 6.8/8.3; container-type: inline-size; }
 .sk-book::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: -4%; height: 8%; background: radial-gradient(closest-side, rgba(0,0,0,.75), transparent); z-index: 0; filter: blur(6px); }
