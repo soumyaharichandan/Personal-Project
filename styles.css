@@ -103,10 +103,18 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 @media (prefers-reduced-motion: reduce) {
   .sticky-note { animation: none; }
 }
+@keyframes clipCounterSway {
+  0%, 100% { transform: rotate(2.5deg); }
+  50% { transform: rotate(-2.5deg); }
+}
 .sticky-note::before {
   content: "📎"; position: absolute; top: 2px; left: -16px; z-index: 2;
-  font-size: 34px; line-height: 1; transform: rotate(-18deg);
+  font-size: 34px; line-height: 1; transform: rotate(2.5deg);
   filter: drop-shadow(1px 3px 2px rgba(13,36,74,.35));
+  animation: clipCounterSway 4.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-note::before { animation: none; }
 }
 .sticky-note-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .sticky-note-icon { font-size: 20px; background: #cddef7; border: 1px solid rgba(13,36,74,.12); box-shadow: 0 2px 5px rgba(13,36,74,.15); border-radius: 10px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
