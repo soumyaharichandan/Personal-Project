@@ -202,7 +202,9 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   --sk-hand: "Kalam", "Patrick Hand", cursive;
   background: var(--sk-desk); border-radius: 20px; padding: 36px 20px 28px;
 }
+.sk-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 36px 20px; }
 .sk-stage { width: min(440px, 100%); margin: 0 auto; perspective: 1900px; }
+.sk-stage-sm { width: 100%; max-width: 260px; perspective: 1400px; }
 .sk-book { position: relative; aspect-ratio: 6.8/8.3; container-type: inline-size; }
 .sk-book::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: -4%; height: 8%; background: radial-gradient(closest-side, rgba(0,0,0,.75), transparent); z-index: 0; filter: blur(6px); }
 .sk-stack { position: absolute; inset: 0; z-index: 1; border-radius: 1cqw; box-shadow: 0 .5cqw 0 var(--sk-edge), 0 1cqw 0 #cbc6b8, 0 1.5cqw 0 #bdb7a8, 0 2cqw 0 #8f8a7e; }
@@ -245,19 +247,6 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 @keyframes skNudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.2cqw); } }
 
 /* contents */
-.sk-contents h2, .sk-endpage h2 { font-family: var(--sk-hand); font-weight: 700; font-size: 8cqw; margin: 0 0 3cqw 6cqw; color: #1d1d20; line-height: 1; }
-.sk-toc { list-style: none; margin: 0; padding: 0 0 0 6cqw; display: grid; }
-.sk-toc button { all: unset; cursor: pointer; display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 1.6cqw; height: 6.2cqw; font-family: var(--sk-hand); font-size: 4.4cqw; color: var(--sk-graphite); width: 100%; }
-.sk-toc button .lead { border-bottom: .35cqw dotted #b3aea2; transform: translateY(-1cqw); }
-.sk-toc button .pg { font-family: var(--mono); font-size: 2.6cqw; color: var(--sk-pencil); }
-.sk-toc button .sub { display: block; font-size: 3cqw; color: var(--sk-pencil); line-height: 1; }
-.sk-toc button:hover .ti, .sk-toc button:focus-visible .ti { color: var(--sk-bluepen); text-decoration: underline wavy rgba(47,86,196,.5); text-underline-offset: .8cqw; }
-.sk-toc button:focus-visible { outline: 2px solid var(--sk-bluepen); outline-offset: 2px; border-radius: 2px; }
-.sk-toc li { min-height: 6.2cqw; }
-.sk-toc .two { height: 12.4cqw; align-items: start; padding-top: 1cqw; }
-.sk-margin-note { margin: auto 0 0 6cqw; font-family: var(--sk-hand); font-size: 3.6cqw; color: var(--sk-redpen); transform: rotate(-2deg); display: flex; gap: 1.4cqw; align-items: center; }
-.sk-margin-note svg { width: 9cqw; height: 6cqw; }
-.sk-margin-note path { fill: none; stroke: var(--sk-redpen); stroke-width: 1.4; stroke-linecap: round; }
 
 /* project page */
 .sk-proj .sk-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2cqw; }
@@ -329,19 +318,8 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-ui .bars i.hi { background: #3d63d8; }
 
 /* end page */
-.sk-endpage .sk-inner { justify-content: center; }
-.sk-endpage p { font-family: var(--sk-hand); font-size: 4.2cqw; margin: 0 0 4cqw 6cqw; color: var(--sk-graphite); max-width: 70%; }
-.sk-endpage a { margin-left: 6cqw; font-family: var(--sk-hand); font-weight: 700; font-size: 4.6cqw; color: var(--sk-bluepen); }
-.sk-endpage .sk-again { all: unset; cursor: pointer; margin: 5cqw 0 0 6cqw; font-family: var(--sk-hand); font-size: 3.6cqw; color: var(--sk-pencil); }
-.sk-endpage .sk-again:hover, .sk-endpage .sk-again:focus-visible { color: var(--sk-redpen); }
 
 /* controls */
-.sk-controls { width: min(440px, 100%); margin: 18px auto 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.sk-controls button { background: transparent; color: #d7d8de; border: 1px solid #333642; border-radius: 999px; padding: 8px 14px; font: 500 13px var(--sans); cursor: pointer; }
-.sk-controls button:hover { border-color: #5a5d6a; }
-.sk-controls button:focus-visible { outline: 2px solid #8aa2ff; outline-offset: 2px; }
-.sk-controls button:disabled { opacity: .35; cursor: default; }
-.sk-where { font-family: var(--mono); font-size: 12px; color: #9a9ca6; letter-spacing: .06em; font-variant-numeric: tabular-nums; text-align: center; }
 
 @media (max-width: 760px) {
   .sk-root { padding: 28px 14px 22px; border-radius: 14px; }

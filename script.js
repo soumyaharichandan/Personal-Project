@@ -91,12 +91,12 @@ if (canvas) {
   });
 }
 
-// Sketchbook — "work I'm proud of" flip-book
+// Sketchbook — "work I'm proud of": one small flip-book per project
 (function () {
-  const pagesEl = document.getElementById('skPages');
-  if (!pagesEl) return;
+  const shelf = document.getElementById('skShelf');
+  if (!shelf) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const COILS = 14;
+  const COILS = 10;
 
   const projects = [
     { title: "ai investigations", kick: "security analysts × ai, during investigations", read: "9 min read",
@@ -169,102 +169,75 @@ if (canvas) {
   const holes = `<div class="sk-holes" aria-hidden="true">${'<i></i>'.repeat(COILS)}</div>`;
   const backFace = `<div class="sk-face back">${holes}</div>`;
 
-  const coverArt = (() => {
-    seed = 3; let d = "";
-    d += rect(30, 20, 200, 130); d += line(30, 36, 230, 36); d += circ(40, 28, 2.5) + circ(49, 28, 2.5) + circ(58, 28, 2.5);
-    d += rect(44, 48, 70, 40); d += line(124, 52, 214, 52) + line(124, 62, 200, 62) + line(124, 72, 190, 72);
-    d += rect(44, 98, 170, 40);
-    const soft = line(56, 110, 150, 110) + line(56, 120, 120, 120) + line(126, 84, 140, 98) + line(140, 98, 135, 99) + line(140, 98, 139, 92);
-    const pencil = "M226 160 L268 108 L276 114 L234 166 Z M226 160 L222 172 L234 166 M268 108 L272 103 L280 109 L276 114";
-    return `<svg viewBox="0 0 300 180" aria-hidden="true"><path d="${d}"/><path class="soft" d="${soft}"/><path d="${pencil}"/><path class="soft" d="M150 158 C 175 150, 195 168, 222 166"/></svg>`;
-  })();
+  // a small static pencil preview of a project's own sketch, used on its cover
+  function coverSketch(p, i) {
+    seed = 31 + i * 13;
+    const paths = sketches[p.sketch]();
+    return `<svg viewBox="0 0 300 180" aria-hidden="true">${paths.map(x => `<path d="${x[0]}" class="${x[1] === 'lite' ? 'soft' : ''}"/>`).join("")}</svg>`;
+  }
 
-  const pagesHTML = [];
-  pagesHTML.push(`<div class="sk-page sk-cover" data-label="cover"><div class="sk-face front" role="button" tabindex="0" aria-label="open the sketchbook">${holes}
-    <div class="sk-inner"><div class="sk-cover-top"><div class="sk-brand"><span class="owner">soumya's</span><span class="word"><span>sketchbook</span></span></div>
-    <div class="sk-spec"><b>04</b><small>projects</small></div></div>
-    <div class="sk-cover-art">${coverArt}</div>
-    <div class="sk-band"><span class="t">work i'm proud of</span><span class="sk-meta">a5 · 140 gsm · zero-to-one inside</span>
-    <span class="open">open <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20 V5 M6 11 L12 5 L18 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></div></div>${backFace}</div>`);
-
-  pagesHTML.push(`<div class="sk-page sk-contents" data-label="contents"><div class="sk-face front sk-plain">${holes}<div class="sk-inner"><h2>contents</h2><ol class="sk-toc">
-    ${projects.map((p, i) => `<li><button type="button" class="two" data-go="${i + 2}"><span><span class="ti">${p.title}</span><span class="sub">${p.read}</span></span><span class="lead"></span><span class="pg">p.0${i + 2}</span></button></li>`).join("")}
-    </ol><div class="sk-margin-note"><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20 C 10 4, 24 2, 36 8 M30 3 L36 8 L29 12"/></svg>start anywhere</div></div></div>${backFace}</div>`);
-
-  projects.forEach((p, i) => {
+  const shelfHTML = projects.map((p, i) => {
+    const num = String(i + 1).padStart(2, "0");
     seed = 11 + i * 17;
     const paths = sketches[p.sketch]();
     const svg = `<svg class="sk" viewBox="0 0 300 180" aria-hidden="true">${paths.map((x, k) => `<path pathLength="1" class="${x[1] || ""}" style="--d:${(k * 0.06).toFixed(2)}s" d="${x[0]}"/>`).join("")}</svg>`;
-    pagesHTML.push(`<div class="sk-page sk-proj" data-label="p.0${i + 2} · ${p.title}"><div class="sk-face front sk-dotgrid">${holes}<div class="sk-inner">
-      <div class="sk-top"><span class="sk-num">p.0${i + 2} · ${p.read}</span><button type="button" class="sk-back-link" data-go="1">↩ contents</button></div>
+
+    const cover = `<div class="sk-page sk-cover" data-label="cover"><div class="sk-face front" role="button" tabindex="0" aria-label="open the sketchbook for ${p.title}">${holes}
+      <div class="sk-inner"><div class="sk-cover-top"><div class="sk-brand"><span class="owner">soumya's</span><span class="word"><span>sketchbook</span></span></div>
+      <div class="sk-spec"><b>${num}</b><small>${p.read}</small></div></div>
+      <div class="sk-cover-art">${coverSketch(p, i)}</div>
+      <div class="sk-band"><span class="t">${p.title}</span><span class="sk-meta">${p.kick}</span>
+      <span class="open">open <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20 V5 M6 11 L12 5 L18 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></div></div>${backFace}</div>`;
+
+    const proj = `<div class="sk-page sk-proj" data-label="p.${num} · ${p.title}"><div class="sk-face front sk-dotgrid">${holes}<div class="sk-inner">
+      <div class="sk-top"><span class="sk-num">p.${num} · ${p.read}</span><button type="button" class="sk-back-link" data-go="0">↩ close</button></div>
       <h3>${p.title}</h3><p class="sk-kick">${p.kick}</p>
       <div class="sk-board" tabindex="0" role="button" aria-label="toggle between sketch and finished screen for ${p.title}">${svg}
         <span class="sk-tape a"></span><span class="sk-tape b"></span><div class="sk-final">${uis[p.ui]}</div><span class="sk-peek-hint">hover to see the sketch</span></div>
       <div class="sk-notes">${p.notes.map(n => `<p><b>${n[0]}:</b>${n[1]}</p>`).join("")}</div>
       <div class="sk-sticky"><b>${p.sticky[0]}</b><span>${p.sticky[1]}</span></div>
       <a class="sk-read" href="${p.url}">read the case study →</a>
-    </div></div>${backFace}</div>`);
-  });
+    </div></div>${backFace}</div>`;
 
-  pagesHTML.push(`<div class="sk-page sk-endpage" data-label="the end"><div class="sk-face front sk-dotgrid">${holes}<div class="sk-inner"><h2>that's the highlights.</h2>
-    <p>the rest of the sketchbook lives further down this page.</p><a href="#work">view all work →</a>
-    <button type="button" class="sk-again" data-go="0">↺ close the book</button></div></div>${backFace}</div>`);
+    return `<div class="sk-cell">
+      <div class="sk-stage sk-stage-sm">
+        <div class="sk-book" data-book="${i}" tabindex="-1">
+          <div class="sk-stack"></div>
+          <div class="sk-spiral" aria-hidden="true">${'<i></i>'.repeat(COILS)}</div>
+          <div class="sk-pages">${cover}${proj}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
 
-  pagesEl.innerHTML = pagesHTML.join("");
-  document.getElementById('skSpiral').innerHTML = '<i></i>'.repeat(COILS);
-  const pages = [...pagesEl.querySelectorAll('.sk-page')];
-  const last = pages.length - 1;
-  let idx = 0;
+  shelf.innerHTML = shelfHTML;
 
-  const zFor = i => i < idx ? i : 100 - i;
-  function go(target) {
-    target = Math.max(0, Math.min(last, target));
-    if (target === idx) return;
-    const forward = target > idx;
-    const moving = forward ? range(idx, target) : range(target, idx).reverse();
-    const step = reduce ? 0 : 130;
-    moving.forEach((pi, k) => {
-      const p = pages[pi];
-      setTimeout(() => {
-        p.dataset.moving = 1; p.style.zIndex = 300 + k;
-        p.classList.toggle('flipped', forward);
-        setTimeout(() => { delete p.dataset.moving; p.style.zIndex = zFor(pi); }, reduce ? 0 : 980);
-      }, k * step);
+  // each book flips independently between its two pages (cover / project)
+  shelf.querySelectorAll('.sk-book').forEach(book => {
+    const pages = [...book.querySelectorAll('.sk-page')];
+    let idx = 0;
+    function paint() {
+      pages.forEach((p, i) => {
+        p.classList.toggle('flipped', i < idx);
+        p.classList.toggle('active', i === idx);
+        p.style.zIndex = i < idx ? i : 100 - i;
+        p.inert = i !== idx;
+      });
+    }
+    function go(target) {
+      target = Math.max(0, Math.min(pages.length - 1, target));
+      if (target === idx) return;
+      idx = target;
+      paint();
+    }
+    book.addEventListener('click', e => {
+      const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
+      const b = e.target.closest('.sk-board'); if (b) { b.classList.toggle('peek'); return; }
+      if (e.target.closest('.sk-cover .sk-face.front')) go(1);
     });
-    idx = target;
-    pages.forEach((p, i) => { if (!moving.includes(i)) p.classList.toggle('flipped', i < idx); p.classList.toggle('active', i === idx); p.inert = i !== idx; if (!moving.includes(i)) p.style.zIndex = zFor(i); });
-    document.getElementById('skWhere').textContent = pages[idx].dataset.label;
-    document.getElementById('skPrev').disabled = idx === 0;
-    document.getElementById('skNext').disabled = idx === last;
-  }
-  const range = (a, b) => Array.from({ length: b - a }, (_, k) => a + k);
-
-  function paint() {
-    pages.forEach((p, i) => {
-      p.classList.toggle('flipped', i < idx);
-      p.classList.toggle('active', i === idx);
-      p.style.zIndex = zFor(i);
-      p.inert = i !== idx;
+    book.addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.sk-board,.sk-cover .sk-face.front')) { e.preventDefault(); e.target.click(); }
     });
-    document.getElementById('skWhere').textContent = pages[idx].dataset.label;
-    document.getElementById('skPrev').disabled = idx === 0;
-    document.getElementById('skNext').disabled = idx === last;
-  }
-
-  pagesEl.addEventListener('click', e => {
-    const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
-    const b = e.target.closest('.sk-board'); if (b) { b.classList.toggle('peek'); return; }
-    if (e.target.closest('.sk-cover .sk-face.front')) go(1);
+    paint();
   });
-  pagesEl.addEventListener('keydown', e => {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.sk-board,.sk-cover .sk-face.front')) { e.preventDefault(); e.target.click(); }
-  });
-  document.getElementById('skPrev').onclick = () => go(idx - 1);
-  document.getElementById('skNext').onclick = () => go(idx + 1);
-  document.getElementById('skBook').addEventListener('keydown', e => {
-    if (e.target.matches('input,textarea')) return;
-    if (e.key === 'ArrowRight') go(idx + 1);
-    if (e.key === 'ArrowLeft') go(idx - 1);
-  });
-  paint();
 })();
