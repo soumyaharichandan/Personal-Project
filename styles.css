@@ -79,7 +79,7 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 
 .intro { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; }
 .intro h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; }
-.intro h2 .h2-line2 { display: inline-block; margin-top: 14px; }
+.intro h2 .h2-line2 { display: inline-block; margin-top: 14px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 400; letter-spacing: normal; color: var(--muted); }
 .intro p { font-size: clamp(17px, 1.8vw, 20px); margin-bottom: 20px; }
 .intro p.dim { color: var(--muted); }
 .intro .more { font-family: var(--mono); font-size: 14px; border-bottom: 1px solid var(--fg); }
