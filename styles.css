@@ -86,8 +86,8 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .intro .more::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--fg); transition: width .3s ease; }
 .intro .more:hover { color: var(--fg); }
 .intro .more:hover::after { width: 100%; }
-.intro .more .arrow { display: inline-block; margin-left: 8px; transition: transform .2s; }
-.intro .more:hover .arrow { transform: translateX(5px); }
+.intro .more .arrow { display: inline-block; margin-left: 0; width: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s, transform .2s; }
+.intro .more:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; transform: translateX(5px); }
 
 @keyframes stickySway {
   0%, 100% { transform: rotate(-9.5deg); }
