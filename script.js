@@ -100,19 +100,19 @@ if (canvas) {
 
   const projects = [
     { title: "ai investigations", kick: "security analysts × ai, during investigations", read: "9 min read",
-      url: "case-1.html", paper: "#dbe0ec", paperBack: "#c9d0e2",
+      url: "case-1.html", paper: "#dbe0ec", paperBack: "#c9d0e2", band: "#c7d2f2", bandInk: "#16213a",
       notes: [["q", "how do analysts and ai work one case together?"], ["tried", "alerts + ai thread side by side"], ["kept", "one shared investigation view"]],
       sticky: ["human + ai", "one thread"], ui: "matters", sketch: "matters" },
     { title: "partner credits", kick: "ux for an aws partner credits programme", read: "3 min read",
-      url: "case-2.html", paper: "#f8e3c8", paperBack: "#efd3ae",
+      url: "case-2.html", paper: "#f8e3c8", paperBack: "#efd3ae", band: "#fcd98f", bandInk: "#3a2410",
       notes: [["q", "why weren't partners claiming credits?"], ["tried", "checks as a clear pass / fail list"], ["kept", "eligibility visible up front"]],
       sticky: ["$5,000", "credits unlocked"], ui: "checks", sketch: "checks" },
     { title: "vision ui", kick: "design system · dark mode & white-labeling", read: "2 min read",
-      url: "case-3.html", paper: "#dcf1e7", paperBack: "#c7e6d7",
+      url: "case-3.html", paper: "#dcf1e7", paperBack: "#c7e6d7", band: "#b9eed7", bandInk: "#0f2e24",
       notes: [["q", "one ui, many brands?"], ["tried", "tokens for every colour"], ["kept", "themes swap without new screens"]],
       sticky: ["dark mode", "+ white-label"], ui: "vision", sketch: "vision" },
     { title: "wafr insights", kick: "turning checks into a reporting workflow", read: "2 min read",
-      url: "case-4.html", paper: "#ece2f8", paperBack: "#dccbef",
+      url: "case-4.html", paper: "#ece2f8", paperBack: "#dccbef", band: "#ddc9f7", bandInk: "#241334",
       notes: [["q", "where do the 5 hours go?"], ["tried", "auto-built report from checks"], ["kept", "dashboard first, export after"]],
       sticky: ["5 h → 45 m", "per report"], ui: "insights", sketch: "insights" }
   ];
@@ -201,7 +201,7 @@ if (canvas) {
 
     return `<div class="sk-cell">
       <div class="sk-stage sk-stage-sm">
-        <div class="sk-book" data-book="${i}" tabindex="-1" style="--sk-paper:${p.paper};--sk-paper-back:${p.paperBack};">
+        <div class="sk-book" data-book="${i}" tabindex="-1" style="--sk-paper:${p.paper};--sk-paper-back:${p.paperBack};--sk-kraft:${p.band};--sk-kraft-ink:${p.bandInk};">
           <div class="sk-stack"></div>
           <div class="sk-spiral" aria-hidden="true">${'<i></i>'.repeat(COILS)}</div>
           <div class="sk-pages">${cover}${proj}</div>
