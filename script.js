@@ -259,11 +259,17 @@ if (canvas) {
       stage.style.width = targetW + 'px';
       closeActive = () => go(0);
       // only flip the page open once the zoom-to-center has fully settled
-      if (reduce) onDone(); else stage.addEventListener('transitionend', onDone, { once: true });
+      if (reduce) { onDone(); return; }
+      stage.addEventListener('transitionend', function onZoomIn(e) {
+        if (e.target !== stage || e.propertyName !== 'width') return;
+        stage.removeEventListener('transitionend', onZoomIn);
+        onDone();
+      });
     }
 
     function closeModal() {
       if (!homeRect) return;
+      closeActive = null;
       overlay.classList.remove('show');
       document.body.classList.remove('sk-modal-open');
       stage.style.left = homeRect.left + 'px';
@@ -276,8 +282,12 @@ if (canvas) {
         cell.style.minHeight = '';
         homeRect = null;
       };
-      if (reduce) cleanup(); else stage.addEventListener('transitionend', cleanup, { once: true });
-      closeActive = null;
+      if (reduce) { cleanup(); return; }
+      stage.addEventListener('transitionend', function onZoomOut(e) {
+        if (e.target !== stage || e.propertyName !== 'width') return;
+        stage.removeEventListener('transitionend', onZoomOut);
+        cleanup();
+      });
     }
 
     function go(target) {
@@ -287,8 +297,16 @@ if (canvas) {
       if (target === 1) {
         openModal(paint); // zoom to center first, flip the page open only once that settles
       } else {
+        // flip the page shut first (the cover un-flipping back into view), zoom
+        // back out to the grid only once that settles
+        const closingPage = pages[0];
         paint();
-        closeModal();
+        if (reduce) { closeModal(); return; }
+        closingPage.addEventListener('transitionend', function onFlip(e) {
+          if (e.target !== closingPage || e.propertyName !== 'transform') return;
+          closingPage.removeEventListener('transitionend', onFlip);
+          closeModal();
+        });
       }
     }
     book.addEventListener('click', e => {
