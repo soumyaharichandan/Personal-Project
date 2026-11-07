@@ -84,9 +84,8 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .intro p.dim { color: var(--muted); }
 .intro .more { font-family: var(--mono); font-size: 14px; border-bottom: 1px solid var(--fg); }
 
-.why-section { padding-top: 8px; padding-bottom: clamp(56px, 8vw, 96px); border-bottom: 1px solid var(--line); }
 .sticky-note {
-  width: 290px; padding: 28px 26px 32px; background: #fdf6b2;
+  width: 290px; margin-top: 36px; padding: 28px 26px 32px; background: #fdf6b2;
   box-shadow: 0 18px 34px rgba(0,0,0,.18), 0 2px 0 rgba(0,0,0,.04);
   transform: rotate(-3deg); position: relative;
   background-image: linear-gradient(180deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,0) 36px);
