@@ -64,17 +64,31 @@ if (canvas) {
     }
     if (!reduce) requestAnimationFrame(draw);
   };
-  const sketchImg = canvas.parentElement.querySelector('.hero-sketch');
+  const sketchWrap = canvas.parentElement.querySelector('.hero-sketch-wrap');
+  const sketchTop = canvas.parentElement.querySelector('.hero-sketch-top');
   canvas.parentElement.addEventListener('pointermove', (e) => {
     const r = canvas.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
-    if (sketchImg) {
+    if (sketchWrap) {
       const nx = (mouse.x / w - .5) * 2, ny = (mouse.y / h - .5) * 2; // -1..1
-      sketchImg.style.transform = `translateX(-50%) rotate(${nx * -1.6}deg) translate(${nx * 6}px, ${ny * 4}px) scale(1.015)`;
+      sketchWrap.style.transform = `translateX(-50%) rotate(${nx * -1.6}deg) translate(${nx * 6}px, ${ny * 4}px) scale(1.015)`;
+    }
+    if (sketchTop) {
+      const wr = sketchWrap.getBoundingClientRect();
+      const px = ((e.clientX - wr.left) / wr.width) * 100;
+      const py = ((e.clientY - wr.top) / wr.height) * 100;
+      if (px >= 0 && px <= 100 && py >= 0 && py <= 100) {
+        sketchTop.style.setProperty('--peel-x', px + '%');
+        sketchTop.style.setProperty('--peel-y', py + '%');
+        sketchTop.style.setProperty('--peel-r', '90px');
+      } else {
+        sketchTop.style.setProperty('--peel-r', '0px');
+      }
     }
   });
   canvas.parentElement.addEventListener('pointerleave', () => {
     mouse = { x: -999, y: -999 };
-    if (sketchImg) sketchImg.style.transform = 'translateX(-50%)';
+    if (sketchWrap) sketchWrap.style.transform = 'translateX(-50%)';
+    if (sketchTop) sketchTop.style.setProperty('--peel-r', '0px');
   });
   addEventListener('resize', size);
   size(); requestAnimationFrame(draw);

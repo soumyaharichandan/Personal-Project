@@ -49,14 +49,30 @@ nav a:hover { color: var(--fg); }
   font-weight: 700; font-size: clamp(90px, 22vw, 300px); letter-spacing: -.04em; line-height: 1;
   color: transparent; -webkit-text-stroke: 1px #e7e7e5; user-select: none; pointer-events: none; z-index: 0;
 }
-.hero-sketch {
+@property --peel-r {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+.hero-sketch-wrap {
   position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-  height: 96%; width: auto; max-width: min(560px, 60%);
-  object-fit: contain; object-position: bottom; z-index: 2; pointer-events: none;
-  filter: contrast(1.02);
+  height: 96%; aspect-ratio: 1 / 1; width: auto; max-width: min(560px, 60%); z-index: 2; pointer-events: auto;
   transform-origin: bottom center;
   transition: transform .35s cubic-bezier(.2,.7,.2,1);
   will-change: transform;
+  --peel-x: 50%; --peel-y: 40%; --peel-r: 0px;
+}
+.hero-sketch-top { transition: --peel-r .25s cubic-bezier(.2,.7,.2,1); }
+.hero-sketch {
+  position: absolute; inset: 0; height: 100%; width: 100%;
+  object-fit: contain; object-position: bottom; pointer-events: none;
+  filter: contrast(1.02);
+}
+.hero-sketch-under { z-index: 1; }
+.hero-sketch-top {
+  z-index: 2;
+  -webkit-mask-image: radial-gradient(circle var(--peel-r) at var(--peel-x) var(--peel-y), transparent 0 78%, black 100%);
+  mask-image: radial-gradient(circle var(--peel-r) at var(--peel-x) var(--peel-y), transparent 0 78%, black 100%);
 }
 .hero-cursor {
   position: fixed; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #0d0d0d;
