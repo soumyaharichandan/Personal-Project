@@ -120,7 +120,7 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .notes a { position: relative; display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px dashed var(--line); transition: opacity .25s; }
 .notes a .label { transition: color .2s; }
 .notes a:hover h3, .notes a:hover .label { color: var(--fg); }
-.notes h3 { font-weight: 400; font-size: 21px; color: var(--muted); transition: color .2s; }
+.notes h3 { font-weight: 400; font-size: 19.5px; color: var(--muted); transition: color .2s; }
 .notes a:last-of-type { border-bottom: 1px dashed var(--line); }
 .notes:hover a:not(:hover) { opacity: .45; }
 /* on hover, pick out just the bottom edge in a darker dashed line — an
