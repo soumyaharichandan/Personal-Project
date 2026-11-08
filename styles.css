@@ -117,9 +117,11 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .cases .tag { color: var(--accent); }
 
 /* Notes */
-.notes a { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid var(--line); }
-.notes a:hover h3 { color: var(--fg); }
+.notes a { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid var(--line); transition: opacity .25s; }
+.notes a .label { transition: color .2s; }
+.notes a:hover h3, .notes a:hover .label { color: var(--fg); }
 .notes h3 { font-weight: 400; font-size: 18px; color: var(--muted); transition: color .2s; }
+.notes:hover a:not(:hover) { opacity: .45; }
 
 /* Lab */
 .lab { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
