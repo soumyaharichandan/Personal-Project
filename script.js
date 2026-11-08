@@ -102,19 +102,19 @@ if (canvas) {
     { title: "ai investigations", kick: "security analysts × ai, during investigations", read: "9 min read",
       url: "case-1.html", paper: "#dbe0ec", paperBack: "#c9d0e2", band: "#6f8af2", bandInk: "#fbfcff",
       notes: [["q", "how do analysts and ai work one case together?"], ["tried", "alerts + ai thread side by side"], ["kept", "one shared investigation view"]],
-      sticky: ["human + ai", "one thread"], ui: "matters", sketch: "matters" },
+      sticky: ["human + ai", "one thread"], ui: "matters", sketch: "matters", tags: ["AI", "Security"] },
     { title: "partner credits", kick: "ux for an aws partner credits programme", read: "3 min read",
       url: "case-2.html", paper: "#f8e3c8", paperBack: "#efd3ae", band: "#f0a93f", bandInk: "#2e1b08",
       notes: [["q", "why weren't partners claiming credits?"], ["tried", "checks as a clear pass / fail list"], ["kept", "eligibility visible up front"]],
-      sticky: ["$5,000", "credits unlocked"], ui: "checks", sketch: "checks" },
+      sticky: ["$5,000", "credits unlocked"], ui: "checks", sketch: "checks", tags: ["UX", "Partner programs"] },
     { title: "vision ui", kick: "design system · dark mode & white-labeling", read: "2 min read",
       url: "case-3.html", paper: "#dcf1e7", paperBack: "#c7e6d7", band: "#36b88e", bandInk: "#f3fdf9",
       notes: [["q", "one ui, many brands?"], ["tried", "tokens for every colour"], ["kept", "themes swap without new screens"]],
-      sticky: ["dark mode", "+ white-label"], ui: "vision", sketch: "vision" },
+      sticky: ["dark mode", "+ white-label"], ui: "vision", sketch: "vision", tags: ["Design systems", "Theming"] },
     { title: "wafr insights", kick: "turning checks into a reporting workflow", read: "2 min read",
       url: "case-4.html", paper: "#ece2f8", paperBack: "#dccbef", band: "#9c5fe0", bandInk: "#faf5ff",
       notes: [["q", "where do the 5 hours go?"], ["tried", "auto-built report from checks"], ["kept", "dashboard first, export after"]],
-      sticky: ["5 h → 45 m", "per report"], ui: "insights", sketch: "insights" }
+      sticky: ["5 h → 45 m", "per report"], ui: "insights", sketch: "insights", tags: ["Analytics", "Reporting"] }
   ];
 
   // seeded wobble so the sketch looks hand-drawn but stays the same every load
@@ -199,7 +199,7 @@ if (canvas) {
       <a class="sk-read" href="${p.url}">read the case study →</a>
     </div></div>${backFace}</div>`;
 
-    return `<div class="sk-cell">
+    return `<div class="sk-cell" data-title="${p.title}" data-kick="${p.kick}" data-tags="${(p.tags || []).join(',')}">
       <div class="sk-stage sk-stage-sm">
         <div class="sk-book" data-book="${i}" tabindex="-1" style="--sk-paper:${p.paper};--sk-paper-back:${p.paperBack};--sk-kraft:${p.band};--sk-kraft-ink:${p.bandInk};">
           <div class="sk-stack"></div>
