@@ -76,8 +76,8 @@ nav a:hover { color: var(--fg); }
 /* arrow's box (width + margin) stays fixed always, so hovering never
    grows the link and shifts text that's pinned to a container edge
    (e.g. the right-aligned sec-head links) — only opacity/position animate */
-.link-animated .arrow { display: inline-block; width: 1em; margin-left: 8px; opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
-.link-animated:hover .arrow { opacity: 1; transform: translateX(0); }
+.link-animated .arrow { display: inline-block; width: 1em; margin-left: 8px; opacity: 0; transform-origin: left center; transform: scaleX(0) translateX(-4px); transition: opacity .2s, transform .3s; }
+.link-animated:hover .arrow { opacity: 1; transform: scaleX(1) translateX(0); }
 .link-animated:not(.btn) { padding-bottom: 4px; }
 .link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: currentColor; transition: width .3s ease; }
 .link-animated:not(.btn):hover::after { width: 100%; }
