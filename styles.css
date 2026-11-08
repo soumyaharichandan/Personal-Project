@@ -117,15 +117,17 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .cases .tag { color: var(--accent); }
 
 /* Notes */
-.notes a { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px dashed var(--line); transition: opacity .25s, box-shadow .25s; }
+.notes a { position: relative; display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px dashed var(--line); transition: opacity .25s; }
 .notes a .label { transition: color .2s; }
 .notes a:hover h3, .notes a:hover .label { color: var(--fg); }
 .notes h3 { font-weight: 400; font-size: 18px; color: var(--muted); transition: color .2s; }
 .notes a:last-of-type { border-bottom: 1px dashed var(--line); }
 .notes:hover a:not(:hover) { opacity: .45; }
-/* on hover, pick out just the bottom edge in a darker solid line — drawn as a
-   box-shadow so it doesn't add to the box and shift the layout by a pixel */
-.notes a:hover { box-shadow: 0 1px 0 0 var(--fg); }
+/* on hover, pick out just the bottom edge in a darker dashed line — an
+   absolutely-positioned pseudo-element so it doesn't add to the box and
+   shift the layout by a pixel */
+.notes a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; border-bottom: 1px dashed var(--fg); opacity: 0; transition: opacity .25s; pointer-events: none; }
+.notes a:hover::after { opacity: 1; }
 
 /* Lab */
 .lab { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
