@@ -72,6 +72,24 @@
             <div><h5>artificial intelligence</h5></div>
           </div>
         </div>
+        <div class="nb-margin-note">
+          <h4>resume →</h4>
+          <button type="button" class="btn-resume" id="resumeOpenBtn">View résumé</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-modal" id="resumeModal" aria-hidden="true">
+      <div class="resume-modal-backdrop" data-resume-close></div>
+      <div class="resume-modal-panel" role="dialog" aria-modal="true" aria-label="Résumé">
+        <div class="resume-modal-head">
+          <span>Résumé</span>
+          <div class="resume-modal-actions">
+            <a href="resume.pdf" download class="resume-dl">Download ↓</a>
+            <button type="button" class="resume-close" data-resume-close aria-label="Close">✕</button>
+          </div>
+        </div>
+        <iframe src="resume.pdf" class="resume-frame" title="Résumé preview"></iframe>
       </div>
     </div>
 
@@ -122,5 +140,25 @@
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const openBtn = document.getElementById('resumeOpenBtn');
+      const modal = document.getElementById('resumeModal');
+      if (!openBtn || !modal) return;
+      function open() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      openBtn.addEventListener('click', open);
+      modal.querySelectorAll('[data-resume-close]').forEach(el => el.addEventListener('click', close));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 </body>
 </html>
