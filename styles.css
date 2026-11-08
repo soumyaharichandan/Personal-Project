@@ -391,7 +391,7 @@ body.sk-modal-open { overflow: hidden; }
   --nb-paper: #f4f2ed; --nb-paper-dark: #141926; --nb-edge: #d6d1c4; --nb-spine: #6b6e78;
   --nb-hand: "Kalam", "Patrick Hand", cursive;
   position: relative; display: grid; grid-template-columns: 1fr 1fr;
-  background: var(--nb-spine); border-radius: 10px; padding: 2px;
+  background: var(--nb-spine); border-radius: 10px; padding: 3px;
   box-shadow: 0 8px 18px -12px rgba(0,0,0,.22);
 }
 .nb-page { background: var(--nb-paper); position: relative; min-height: 560px; padding: 44px 40px; overflow: hidden; }
