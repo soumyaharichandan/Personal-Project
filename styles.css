@@ -70,15 +70,15 @@ nav a:hover { color: var(--fg); }
 .btn { display: inline-flex; align-items: center; background: var(--ink); color: var(--on-ink); padding: 14px 24px; font-size: 16px; justify-self: end; transition: transform .2s, opacity .2s; }
 .btn:hover { transform: translateX(3px); opacity: .9; }
 
-/* shared "go somewhere" link animation: arrow slides in on hover, plus a
-   growing underline for plain text links (buttons skip the underline) */
+/* shared "go somewhere" link animation: the whole link nudges left on
+   hover (a transform, so it never pushes layout/siblings) while the
+   arrow grows in on the right, plus a growing underline for plain text
+   links (buttons skip the underline) */
 .link-animated { position: relative; display: inline-flex; align-items: center; transition: color .2s; }
-/* arrow's box (width + margin) stays fixed always, so hovering never
-   grows the link and shifts text that's pinned to a container edge
-   (e.g. the right-aligned sec-head links) — only opacity/position animate */
-.link-animated .arrow { display: inline-block; width: 1em; margin-left: 8px; opacity: 0; transform-origin: left center; transform: scaleX(0) translateX(-4px); transition: opacity .2s, transform .3s; }
-.link-animated:hover .arrow { opacity: 1; transform: scaleX(1) translateX(0); }
-.link-animated:not(.btn) { padding-bottom: 4px; }
+.link-animated .arrow { display: inline-block; width: 0; margin-left: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s; }
+.link-animated:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; }
+.link-animated:not(.btn) { padding-bottom: 4px; transition: color .2s, transform .2s; }
+.link-animated:not(.btn):hover { transform: translateX(-6px); }
 .link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: currentColor; transition: width .3s ease; }
 .link-animated:not(.btn):hover::after { width: 100%; }
 
