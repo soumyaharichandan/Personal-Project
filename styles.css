@@ -73,8 +73,11 @@ nav a:hover { color: var(--fg); }
 /* shared "go somewhere" link animation: arrow slides in on hover, plus a
    growing underline for plain text links (buttons skip the underline) */
 .link-animated { position: relative; display: inline-flex; align-items: center; transition: color .2s; }
-.link-animated .arrow { display: inline-block; margin-left: 0; width: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s, transform .2s; }
-.link-animated:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; transform: translateX(5px); }
+/* arrow's box (width + margin) stays fixed always, so hovering never
+   grows the link and shifts text that's pinned to a container edge
+   (e.g. the right-aligned sec-head links) — only opacity/position animate */
+.link-animated .arrow { display: inline-block; width: 1em; margin-left: 8px; opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
+.link-animated:hover .arrow { opacity: 1; transform: translateX(0); }
 .link-animated:not(.btn) { padding-bottom: 4px; }
 .link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: currentColor; transition: width .3s ease; }
 .link-animated:not(.btn):hover::after { width: 100%; }
