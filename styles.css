@@ -67,8 +67,17 @@ nav a:hover { color: var(--fg); }
 .tagline { padding: 22px var(--gutter); text-align: center; font-family: var(--mono); font-size: clamp(17px, 2.4vw, 24px); color: var(--muted); border-bottom: 1px solid var(--line); }
 .status { display: grid; grid-template-columns: repeat(3, auto) 1fr; gap: 24px 56px; align-items: end; padding: 32px 0; border-bottom: 1px solid var(--line); }
 .status p { margin-top: 4px; font-size: 17px; }
-.btn { display: inline-block; background: var(--ink); color: var(--on-ink); padding: 14px 24px; font-size: 16px; justify-self: end; transition: transform .2s, opacity .2s; }
+.btn { display: inline-flex; align-items: center; background: var(--ink); color: var(--on-ink); padding: 14px 24px; font-size: 16px; justify-self: end; transition: transform .2s, opacity .2s; }
 .btn:hover { transform: translateX(3px); opacity: .9; }
+
+/* shared "go somewhere" link animation: arrow slides in on hover, plus a
+   growing underline for plain text links (buttons skip the underline) */
+.link-animated { position: relative; display: inline-flex; align-items: center; transition: color .2s; }
+.link-animated .arrow { display: inline-block; margin-left: 0; width: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s, transform .2s; }
+.link-animated:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; transform: translateX(5px); }
+.link-animated:not(.btn) { padding-bottom: 4px; }
+.link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: currentColor; transition: width .3s ease; }
+.link-animated:not(.btn):hover::after { width: 100%; }
 
 /* Sections */
 section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line); }
@@ -83,12 +92,8 @@ section { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--line
 .intro h2 .h2-line2 { display: inline-block; margin-top: 14px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; letter-spacing: normal; color: var(--muted); }
 .intro p { font-size: clamp(15px, 1.6vw, 18px); font-weight: 400; margin-bottom: 20px; color: var(--muted); }
 .intro p.dim { color: var(--muted); }
-.intro .more { display: inline-flex; align-items: center; margin-top: 8px; font-family: var(--mono); font-weight: 400; font-size: 13px; color: var(--muted); padding-bottom: 4px; position: relative; transition: color .2s; }
-.intro .more::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--fg); transition: width .3s ease; }
+.intro .more { margin-top: 8px; font-family: var(--mono); font-weight: 400; font-size: 13px; color: var(--muted); }
 .intro .more:hover { color: var(--fg); }
-.intro .more:hover::after { width: 100%; }
-.intro .more .arrow { display: inline-block; margin-left: 0; width: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s, transform .2s; }
-.intro .more:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; transform: translateX(5px); }
 
 .sticky-note {
   width: 290px; margin-top: 44px; padding: 28px 26px 32px; background: #e3ecfb;
