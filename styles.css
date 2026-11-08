@@ -488,7 +488,9 @@ body.sk-modal-open { overflow: hidden; }
 .resume-dl { font-family: var(--mono); font-size: 12px; color: var(--fg); text-decoration: underline; }
 .resume-close { background: none; border: none; font-size: 16px; color: var(--muted); cursor: pointer; line-height: 1; padding: 4px; }
 .resume-close:hover { color: var(--fg); }
-.resume-frame { flex: 1; border: 0; width: 100%; background: #fff; }
+.resume-frame { flex: 1; border: 0; width: 100%; background: #e9e9ec; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 16px; }
+.resume-loading { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: auto; }
+.resume-page { max-width: 100%; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 @media (max-width: 600px) { .resume-modal { padding: 12px; } }
 
 @media (max-width: 820px) {
