@@ -76,7 +76,7 @@ nav a:hover { color: var(--fg); }
 .link-animated .arrow { display: inline-block; margin-left: 0; width: 0; opacity: 0; overflow: hidden; transition: opacity .2s, margin-left .2s, width .2s, transform .2s; }
 .link-animated:hover .arrow { opacity: 1; margin-left: 8px; width: 1em; transform: translateX(5px); }
 .link-animated:not(.btn) { padding-bottom: 4px; }
-.link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: currentColor; transition: width .3s ease; }
+.link-animated:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: currentColor; transition: width .3s ease; }
 .link-animated:not(.btn):hover::after { width: 100%; }
 
 /* Sections */
