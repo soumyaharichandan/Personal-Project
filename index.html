@@ -108,6 +108,36 @@
       <div class="wrap reveal">
         <h2>Let's build something good.</h2>
         <a class="mail" href="mailto:soumya.chandan123@gmail.com">soumya.chandan123@gmail.com</a>
+
+        <form class="contact-form" id="contactForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSflz480FR3MFNfzm8U8F1aNbu_wl8tWA0mqegurBOWjzRJwKQ/formResponse" method="POST" target="hiddenFormFrame">
+          <div class="cf-row">
+            <label class="cf-field"><span>Name</span><input type="text" name="entry.1096800602" autocomplete="name" required></label>
+            <label class="cf-field"><span>Email</span><input type="email" name="entry.206578783" autocomplete="email" required></label>
+          </div>
+          <div class="cf-row">
+            <label class="cf-field"><span>Phone <small>(optional)</small></span><input type="tel" name="entry.526488577" autocomplete="tel"></label>
+            <label class="cf-field"><span>Subject</span>
+              <select name="entry.789215000" required>
+                <option value="" disabled selected>Choose</option>
+                <option>Design project inquiry</option>
+                <option>Feedback on work</option>
+                <option>Career guidance</option>
+                <option>Project collaboration</option>
+                <option>Professional networking</option>
+              </select>
+            </label>
+          </div>
+          <label class="cf-field"><span>Message</span><textarea name="entry.842930731" rows="4" required></textarea></label>
+          <fieldset class="cf-radio-group">
+            <legend>Preferred contact method <small>(optional)</small></legend>
+            <label><input type="radio" name="entry.1008264206" value="Email"> Email</label>
+            <label><input type="radio" name="entry.1008264206" value="Phone"> Phone</label>
+          </fieldset>
+          <button type="submit" class="cf-submit">Send message</button>
+          <p class="cf-status" id="cfStatus" hidden></p>
+        </form>
+        <iframe name="hiddenFormFrame" id="hiddenFormFrame" style="display:none" aria-hidden="true" title="form submission target"></iframe>
+
         <div class="socials"><a href="https://www.linkedin.com/in/soumya-r-h/" target="_blank" rel="noopener">LinkedIn</a><a href="#">Behance</a><a href="https://github.com/soumyaharichandan" target="_blank" rel="noopener">GitHub</a><button type="button" class="link-animated" id="resumeOpenBtn">Resume <span class="arrow">↗</span></button></div>
       </div>
     </section>
@@ -131,6 +161,33 @@
 
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    // Contact form — posts straight to the Google Form's response endpoint
+    // via a hidden iframe (so the page never navigates away), and shows a
+    // simple sent/not-sent status once the iframe finishes loading.
+    (function () {
+      const form = document.getElementById('contactForm');
+      const frame = document.getElementById('hiddenFormFrame');
+      const status = document.getElementById('cfStatus');
+      if (!form || !frame || !status) return;
+      let submitting = false;
+
+      form.addEventListener('submit', () => {
+        submitting = true;
+        status.hidden = false;
+        status.textContent = 'Sending…';
+        status.className = 'cf-status';
+      });
+
+      frame.addEventListener('load', () => {
+        if (!submitting) return; // ignore the iframe's own initial blank load
+        submitting = false;
+        status.textContent = "Thanks — got it. I'll get back to you soon.";
+        status.className = 'cf-status cf-status-ok';
+        form.reset();
+      });
+    })();
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     (function () {
