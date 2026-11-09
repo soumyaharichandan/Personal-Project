@@ -311,8 +311,8 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 }
 .sk-more-btn:hover, .sk-more-btn.active { border-color: var(--fg); color: var(--fg); }
 .sk-more-dropdown {
-  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 180px;
-  display: flex; flex-direction: column; gap: 6px;
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 140px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
   background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
   box-shadow: 0 16px 36px -16px rgba(0,0,0,.3);
 }
@@ -321,9 +321,9 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   text-transform: uppercase; color: var(--muted);
 }
 .sk-active-subchip {
-  display: inline-flex; align-items: center; justify-content: space-between; gap: 6px;
+  display: inline-flex; align-items: center; gap: 5px;
   font-family: var(--mono); font-size: 11px; letter-spacing: .03em; color: var(--fg);
-  padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg);
+  padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg);
 }
 .sk-active-subchip .sk-active-chip-x { background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; font-size: 10px; color: inherit; }
 .sk-cell.sk-hidden { display: none; }
