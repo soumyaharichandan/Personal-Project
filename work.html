@@ -92,34 +92,25 @@
           "D2C"
         ]
       };
-      // group categories always appear in the filter, even if no project is tagged with them yet
-      Object.keys(SUBSTAGES).forEach(k => tagSet.add(k));
       const selectedTags = new Set();
       const selectedSubstages = new Set();
 
       function renderPopover() {
-        catPopover.innerHTML = [...tagSet].sort().map(t => {
-          if (SUBSTAGES[t]) {
-            const subItems = SUBSTAGES[t].map(s => `
-              <label class="sk-filter-option sk-filter-suboption">
-                <input type="checkbox" data-sub value="${s}">
-                <span>${s}</span>
-              </label>
-            `).join('');
-            return `
-              <div class="sk-filter-group-item">
-                <button type="button" class="sk-filter-option sk-filter-group-toggle" data-group="${t}">
-                  <span>${t}</span><span class="sk-filter-caret">⌄</span>
-                </button>
-                <div class="sk-filter-subgroup" data-group-panel="${t}" hidden>${subItems}</div>
-              </div>
-            `;
-          }
-          return `
-            <label class="sk-filter-option">
-              <input type="checkbox" value="${t}">
-              <span>${t}</span>
+        // only the multi-stage categories are shown — flat single-value tags were removed
+        catPopover.innerHTML = Object.keys(SUBSTAGES).sort().map(t => {
+          const subItems = SUBSTAGES[t].map(s => `
+            <label class="sk-filter-option sk-filter-suboption">
+              <input type="checkbox" data-sub value="${s}">
+              <span>${s}</span>
             </label>
+          `).join('');
+          return `
+            <div class="sk-filter-group-item">
+              <button type="button" class="sk-filter-option sk-filter-group-toggle" data-group="${t}">
+                <span>${t}</span><span class="sk-filter-caret">⌄</span>
+              </button>
+              <div class="sk-filter-subgroup" data-group-panel="${t}" hidden>${subItems}</div>
+            </div>
           `;
         }).join('');
       }
