@@ -106,7 +106,8 @@ if (canvas) {
     { title: "partner credits", kick: "ux for an aws partner credits programme", read: "3 min read",
       url: "case-2.html", paper: "#f8e3c8", paperBack: "#efd3ae", band: "#f0a93f", bandInk: "#2e1b08",
       notes: [["q", "why weren't partners claiming credits?"], ["tried", "checks as a clear pass / fail list"], ["kept", "eligibility visible up front"]],
-      sticky: ["$5,000", "credits unlocked"], ui: "checks", sketch: "checks", tags: ["UX", "Partner programs"] },
+      sticky: ["$5,000", "credits unlocked"], ui: "checks", sketch: "checks", tags: ["UX", "Partner programs"],
+      substages: ["Research & Discovery", "Definition", "Testing & Validation"] },
     { title: "vision ui", kick: "design system · dark mode & white-labeling", read: "2 min read",
       url: "case-3.html", paper: "#dcf1e7", paperBack: "#c7e6d7", band: "#36b88e", bandInk: "#f3fdf9",
       notes: [["q", "one ui, many brands?"], ["tried", "tokens for every colour"], ["kept", "themes swap without new screens"]],
@@ -199,7 +200,7 @@ if (canvas) {
       <a class="sk-read" href="${p.url}">read the case study →</a>
     </div></div>${backFace}</div>`;
 
-    return `<div class="sk-cell" data-title="${p.title}" data-kick="${p.kick}" data-tags="${(p.tags || []).join(',')}">
+    return `<div class="sk-cell" data-title="${p.title}" data-kick="${p.kick}" data-tags="${(p.tags || []).join(',')}" data-substages="${(p.substages || []).join('|')}">
       <div class="sk-stage sk-stage-sm">
         <div class="sk-book" data-book="${i}" tabindex="-1" style="--sk-paper:${p.paper};--sk-paper-back:${p.paperBack};--sk-kraft:${p.band};--sk-kraft-ink:${p.bandInk};">
           <div class="sk-stack"></div>

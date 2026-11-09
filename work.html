@@ -36,6 +36,7 @@
         </div>
         <button type="button" class="sk-filter-clear" id="skFilterClear" hidden>✕ Clear all</button>
       </div>
+      <div class="sk-active-filters" id="skActiveFilters"></div>
       <div class="sk-shelf" id="skShelf"></div>
       <p class="sk-empty" id="skEmpty">No projects match that search.</p>
     </div>
@@ -51,30 +52,87 @@
       const catLabel = document.getElementById('skCategoryLabel');
       const catPopover = document.getElementById('skCategoryPopover');
       const clearBtn = document.getElementById('skFilterClear');
+      const activeFiltersEl = document.getElementById('skActiveFilters');
       if (!shelf || !searchEl || !catBtn || !catPopover) return;
       const cells = [...shelf.querySelectorAll('.sk-cell')];
       const tagSet = new Set();
       cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
+      const SUBSTAGES = {
+        UX: [
+          "Research & Discovery",
+          "Definition",
+          "Ideation & Architecture",
+          "Prototyping",
+          "Testing & Validation",
+          "Implementation & Handoff",
+          "Design QA"
+        ]
+      };
       const selectedTags = new Set();
+      const selectedSubstages = new Set();
 
       function renderPopover() {
-        catPopover.innerHTML = [...tagSet].sort().map(t => `
-          <label class="sk-filter-option">
-            <input type="checkbox" value="${t}">
-            <span>${t}</span>
-          </label>
-        `).join('');
+        catPopover.innerHTML = [...tagSet].sort().map(t => {
+          if (SUBSTAGES[t]) {
+            const subItems = SUBSTAGES[t].map(s => `
+              <label class="sk-filter-option sk-filter-suboption">
+                <input type="checkbox" data-sub value="${s}">
+                <span>${s}</span>
+              </label>
+            `).join('');
+            return `
+              <div class="sk-filter-group-item">
+                <button type="button" class="sk-filter-option sk-filter-group-toggle" data-group="${t}">
+                  <span>${t}</span><span class="sk-filter-caret">⌄</span>
+                </button>
+                <div class="sk-filter-subgroup" data-group-panel="${t}" hidden>${subItems}</div>
+              </div>
+            `;
+          }
+          return `
+            <label class="sk-filter-option">
+              <input type="checkbox" value="${t}">
+              <span>${t}</span>
+            </label>
+          `;
+        }).join('');
       }
 
       function updateLabel() {
-        if (selectedTags.size === 0) {
+        const total = selectedTags.size + selectedSubstages.size;
+        if (total === 0) {
           catLabel.textContent = 'Category';
-        } else if (selectedTags.size === 1) {
-          catLabel.textContent = [...selectedTags][0];
+        } else if (total === 1) {
+          catLabel.textContent = [...selectedTags, ...selectedSubstages][0];
         } else {
-          catLabel.textContent = `Category (${selectedTags.size})`;
+          catLabel.textContent = `Category (${total})`;
         }
-        catBtn.classList.toggle('active', selectedTags.size > 0);
+        catBtn.classList.toggle('active', total > 0);
+      }
+
+      function renderActiveFilters() {
+        if (!activeFiltersEl) return;
+        const chips = [
+          ...[...selectedTags].map(v => ({ v, sub: false })),
+          ...[...selectedSubstages].map(v => ({ v, sub: true }))
+        ];
+        activeFiltersEl.innerHTML = chips.map(({ v, sub }) => `
+          <button type="button" class="sk-active-chip" data-remove="${v}" data-sub="${sub}">
+            ${v}<span class="sk-active-chip-x">✕</span>
+          </button>
+        `).join('');
+      }
+
+      function removeFilter(value, isSub) {
+        const set = isSub ? selectedSubstages : selectedTags;
+        set.delete(value);
+        const cb = catPopover.querySelector(
+          isSub ? `input[data-sub][value="${CSS.escape(value)}"]` : `input[value="${CSS.escape(value)}"]:not([data-sub])`
+        );
+        if (cb) cb.checked = false;
+        updateLabel();
+        renderActiveFilters();
+        apply();
       }
 
       function apply() {
@@ -84,14 +142,16 @@
           const title = (c.dataset.title || '').toLowerCase();
           const kick = (c.dataset.kick || '').toLowerCase();
           const tags = (c.dataset.tags || '').split(',');
+          const substages = (c.dataset.substages || '').split('|').filter(Boolean);
           const matchesTerm = !term || title.includes(term) || kick.includes(term);
           const matchesTag = selectedTags.size === 0 || tags.some(t => selectedTags.has(t));
-          const show = matchesTerm && matchesTag;
+          const matchesSub = selectedSubstages.size === 0 || substages.some(s => selectedSubstages.has(s));
+          const show = matchesTerm && matchesTag && matchesSub;
           c.classList.toggle('sk-hidden', !show);
           if (show) visible++;
         });
         emptyEl.classList.toggle('show', visible === 0);
-        clearBtn.hidden = term === '' && selectedTags.size === 0;
+        clearBtn.hidden = term === '' && selectedTags.size === 0 && selectedSubstages.size === 0;
       }
 
       function openPopover() {
@@ -107,28 +167,46 @@
         e.stopPropagation();
         catPopover.hidden ? openPopover() : closePopover();
       });
-      catPopover.addEventListener('click', e => e.stopPropagation());
+      catPopover.addEventListener('click', e => {
+        e.stopPropagation();
+        const groupToggle = e.target.closest('.sk-filter-group-toggle');
+        if (groupToggle) {
+          const panel = catPopover.querySelector(`[data-group-panel="${groupToggle.dataset.group}"]`);
+          if (panel) panel.hidden = !panel.hidden;
+          groupToggle.classList.toggle('expanded', panel && !panel.hidden);
+        }
+      });
       catPopover.addEventListener('change', e => {
         const cb = e.target;
         if (cb.type !== 'checkbox') return;
-        cb.checked ? selectedTags.add(cb.value) : selectedTags.delete(cb.value);
+        const set = cb.hasAttribute('data-sub') ? selectedSubstages : selectedTags;
+        cb.checked ? set.add(cb.value) : set.delete(cb.value);
         updateLabel();
+        renderActiveFilters();
         apply();
+      });
+      activeFiltersEl && activeFiltersEl.addEventListener('click', e => {
+        const chip = e.target.closest('.sk-active-chip');
+        if (!chip) return;
+        removeFilter(chip.dataset.remove, chip.dataset.sub === 'true');
       });
       document.addEventListener('click', () => closePopover());
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopover(); });
 
       clearBtn.addEventListener('click', () => {
         selectedTags.clear();
+        selectedSubstages.clear();
         searchEl.value = '';
         catPopover.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         updateLabel();
+        renderActiveFilters();
         apply();
       });
       searchEl.addEventListener('input', apply);
 
       renderPopover();
       updateLabel();
+      renderActiveFilters();
       apply();
     })();
   </script>

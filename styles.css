@@ -271,18 +271,34 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-filter-pill.active { border-color: var(--fg); background: var(--fg); color: var(--bg); }
 .sk-filter-caret { font-size: 10px; opacity: .7; }
 .sk-filter-popover {
-  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 200px;
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 240px; max-height: 70vh; overflow-y: auto;
   background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px;
   box-shadow: 0 16px 36px -16px rgba(0,0,0,.3);
 }
 .sk-filter-option { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 5px; cursor: pointer; font-size: 13px; }
 .sk-filter-option:hover { background: var(--bg); }
 .sk-filter-option input { accent-color: var(--fg); }
+.sk-filter-group-toggle { width: 100%; justify-content: space-between; border: none; background: none; font-family: inherit; color: var(--fg); text-align: left; }
+.sk-filter-group-toggle .sk-filter-caret { transition: transform .15s; }
+.sk-filter-group-toggle.expanded .sk-filter-caret { transform: rotate(180deg); }
+.sk-filter-subgroup { padding-left: 14px; border-left: 1px solid var(--line); margin: 2px 0 4px 16px; }
+.sk-filter-suboption { font-size: 12.5px; color: var(--muted); }
+.sk-filter-suboption:hover { color: var(--fg); }
 .sk-filter-clear {
   font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
   padding: 9px 12px; border: none; background: none; color: var(--muted); cursor: pointer;
 }
 .sk-filter-clear:hover { color: var(--fg); }
+.sk-active-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.sk-active-filters:empty { margin-top: 0; }
+.sk-active-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .03em;
+  padding: 6px 10px; border: 1px solid var(--line); background: var(--card); color: var(--fg);
+  border-radius: 999px; cursor: pointer;
+}
+.sk-active-chip:hover { border-color: var(--fg); }
+.sk-active-chip-x { font-size: 10px; opacity: .6; }
 .sk-cell.sk-hidden { display: none; }
 .sk-empty { font-family: var(--mono); font-size: 13px; color: var(--muted); padding: 32px 0; display: none; }
 .sk-empty.show { display: block; }
