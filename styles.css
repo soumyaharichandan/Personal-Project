@@ -218,6 +218,27 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   .cs-page-dots { order: -1; width: 100%; justify-content: center; margin-bottom: 8px; }
 }
 
+/* Numbered pagination for list/grid pages (work, notebooks, lab, learning, reading list) */
+.pg-hidden { display: none; }
+.pg-pagination { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 40px; }
+.pg-pagination[hidden] { display: none; }
+.pg-arrow {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  padding: 7px 12px; border: 1px solid var(--line); border-radius: 5px;
+  background: none; color: var(--fg); cursor: pointer; transition: border-color .2s, color .2s, opacity .2s;
+}
+.pg-arrow:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.pg-arrow:disabled { opacity: .35; cursor: default; }
+.pg-nums { display: flex; align-items: center; gap: 4px; }
+.pg-num {
+  font-family: var(--mono); font-size: 12px;
+  width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid transparent; border-radius: 5px; background: none; color: var(--muted); cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.pg-num:hover { color: var(--fg); }
+.pg-num.active { border-color: var(--line); color: var(--fg); font-weight: 600; background: var(--card); }
+
 /* What I'm learning — index cards on the desk */
 .learn-intro { color: var(--muted); font-size: 16px; max-width: 560px; margin: -20px 0 32px; }
 .learn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

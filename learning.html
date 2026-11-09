@@ -55,8 +55,19 @@
         <div class="stack"><span>LLMS</span><span>AGENTS</span><span>EVALS</span></div>
       </article>
     </div>
+    <nav class="pg-pagination" id="learnPagination" aria-label="Pagination" hidden></nav>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const items = [...document.querySelectorAll('.learn > .learn-card')];
+      const PER_PAGE = 1;
+      const pagination = skPagination(document.getElementById('learnPagination'), page => {
+        items.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
+      });
+      pagination.setCount(items.length, PER_PAGE);
+    })();
+  </script>
 </body>
 </html>

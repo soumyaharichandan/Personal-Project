@@ -56,6 +56,7 @@
         </svg>
         <p>No projects match that search.</p>
       </div>
+      <nav class="pg-pagination" id="skPagination" aria-label="Pagination" hidden></nav>
     </div>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
@@ -122,6 +123,11 @@
       const selectedTags = new Set();
       const selectedSubstages = new Set();
       const openMoreGroups = new Set();
+      const PER_PAGE = 2;
+      const pagination = skPagination(document.getElementById('skPagination'), page => {
+        const matched = cells.filter(c => !c.classList.contains('sk-hidden'));
+        matched.forEach((c, i) => c.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
+      });
 
       // splits "Short Name (longer explanation)" into its short label and
       // explanatory note, so the short part can be shown everywhere and the
@@ -256,6 +262,7 @@
         });
         emptyEl.classList.toggle('show', visible === 0);
         clearBtn.hidden = term === '' && selectedTags.size === 0 && selectedSubstages.size === 0;
+        pagination.setCount(visible, PER_PAGE);
       }
 
       function openPopover() {

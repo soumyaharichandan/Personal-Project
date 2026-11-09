@@ -61,6 +61,52 @@ btn.addEventListener('click', () => {
   if (matchedInBurger && burgerBtn) burgerBtn.classList.add('nav-current');
 })();
 
+// Shared numbered-pagination control: renders "← Prev  1 2 3  Next →" into
+// `root` and calls `onChange(page)` whenever the active page changes. A page
+// just tells it the total item count (setCount) and hides/shows its own
+// items from inside onChange — this only owns the control itself.
+function skPagination(root, onChange) {
+  if (!root) return { setCount: () => {} };
+  let page = 1;
+  let pageCount = 1;
+
+  function renderControls() {
+    const nums = [];
+    for (let p = 1; p <= pageCount; p++) {
+      nums.push(`<button type="button" class="pg-num${p === page ? ' active' : ''}" data-page="${p}"${p === page ? ' aria-current="page"' : ''}>${p}</button>`);
+    }
+    root.innerHTML = `
+      <button type="button" class="pg-arrow pg-prev" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''} aria-label="Previous page">← Prev</button>
+      <div class="pg-nums">${nums.join('')}</div>
+      <button type="button" class="pg-arrow pg-next" data-page="${page + 1}" ${page === pageCount ? 'disabled' : ''} aria-label="Next page">Next →</button>
+    `;
+  }
+
+  root.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-page]:not(:disabled)');
+    if (!btn) return;
+    const p = parseInt(btn.dataset.page, 10);
+    if (!p || p === page || p < 1 || p > pageCount) return;
+    page = p;
+    renderControls();
+    onChange(page);
+    root.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  return {
+    // called whenever the underlying item count changes (new filter/search
+    // results, or first load); always resets to page 1
+    setCount(total, perPage) {
+      root.hidden = total === 0;
+      if (total === 0) return;
+      pageCount = Math.max(1, Math.ceil(total / perPage));
+      page = 1;
+      renderControls();
+      onChange(page);
+    }
+  };
+}
+
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

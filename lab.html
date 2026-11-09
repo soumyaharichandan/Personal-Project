@@ -48,8 +48,19 @@
         <div class="stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
       </article>
     </div>
+    <nav class="pg-pagination" id="labPagination" aria-label="Pagination" hidden></nav>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const items = [...document.querySelectorAll('.lab > article')];
+      const PER_PAGE = 1;
+      const pagination = skPagination(document.getElementById('labPagination'), page => {
+        items.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
+      });
+      pagination.setCount(items.length, PER_PAGE);
+    })();
+  </script>
 </body>
 </html>

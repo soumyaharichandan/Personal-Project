@@ -61,6 +61,7 @@
       </svg>
       <p>No notes match that search.</p>
     </div>
+    <nav class="pg-pagination" id="nbPagination" aria-label="Pagination" hidden></nav>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
@@ -79,6 +80,11 @@
       const tagSet = new Set();
       cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
       const selectedTags = new Set();
+      const PER_PAGE = 3;
+      const pagination = skPagination(document.getElementById('nbPagination'), page => {
+        const matched = cells.filter(c => !c.classList.contains('sk-hidden'));
+        matched.forEach((c, i) => c.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
+      });
 
       function renderPopover() {
         catPopover.innerHTML = [...tagSet].sort().map(t => `
@@ -129,6 +135,7 @@
         });
         emptyEl.classList.toggle('show', visible === 0);
         clearBtn.hidden = term === '' && selectedTags.size === 0;
+        pagination.setCount(visible, PER_PAGE);
       }
 
       function openPopover() { catPopover.hidden = false; catBtn.setAttribute('aria-expanded', 'true'); }

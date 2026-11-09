@@ -46,8 +46,19 @@
         <div class="stack"><span>TAG</span><span>TAG</span></div>
       </article>
     </div>
+    <nav class="pg-pagination" id="libPagination" aria-label="Pagination" hidden></nav>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const items = [...document.querySelectorAll('.lib-grid > .learn-card')];
+      const PER_PAGE = 1;
+      const pagination = skPagination(document.getElementById('libPagination'), page => {
+        items.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
+      });
+      pagination.setCount(items.length, PER_PAGE);
+    })();
+  </script>
 </body>
 </html>
