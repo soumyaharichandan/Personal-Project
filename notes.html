@@ -65,8 +65,9 @@
       <label class="pg-size"><span>Show</span>
         <select id="nbPerPage" aria-label="Items per page">
           <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="5">5 (all)</option>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
         </select>
       </label>
       <nav class="pg-pagination" id="nbPagination" aria-label="Pagination" hidden></nav>
@@ -92,7 +93,7 @@
       const pgBar = document.getElementById('nbPgBar');
       const perPageSelect = document.getElementById('nbPerPage');
       const PP_KEY = 'pgPerPage:notes';
-      let PER_PAGE = 3;
+      let PER_PAGE = 2;
       try { const saved = parseInt(localStorage.getItem(PP_KEY), 10); if (saved) PER_PAGE = saved; } catch (e) {}
       if (perPageSelect) {
         perPageSelect.value = String(PER_PAGE);

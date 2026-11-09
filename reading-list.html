@@ -49,9 +49,10 @@
     <div class="pg-bar" id="libPgBar">
       <label class="pg-size"><span>Show</span>
         <select id="libPerPage" aria-label="Items per page">
-          <option value="1">1 (all)</option>
           <option value="2">2</option>
-          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
         </select>
       </label>
       <nav class="pg-pagination" id="libPagination" aria-label="Pagination" hidden></nav>
@@ -65,7 +66,7 @@
       const pgBar = document.getElementById('libPgBar');
       const perPageSelect = document.getElementById('libPerPage');
       const PP_KEY = 'pgPerPage:reading-list';
-      let PER_PAGE = 1;
+      let PER_PAGE = 2;
       try { const saved = parseInt(localStorage.getItem(PP_KEY), 10); if (saved) PER_PAGE = saved; } catch (e) {}
       function render() {
         if (pgBar) pgBar.hidden = items.length === 0;
