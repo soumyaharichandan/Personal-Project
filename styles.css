@@ -47,7 +47,10 @@ nav a:hover { color: var(--fg); }
   background: none; color: var(--muted); cursor: pointer; font-size: 14px; line-height: 1;
   transition: border-color .2s, color .2s;
 }
-.burger-btn:hover, .burger-btn.active { border-color: var(--fg); color: var(--fg); }
+.burger-btn:hover, .burger-btn.open { border-color: var(--fg); color: var(--fg); }
+.burger-btn.nav-current { border-color: var(--accent); color: var(--accent); }
+nav a.nav-current { color: var(--fg); font-weight: 600; }
+.burger-panel a.nav-current { color: var(--accent); font-weight: 600; }
 .burger-panel {
   position: absolute; top: calc(100% + 10px); right: 0; z-index: 30; min-width: 160px;
   background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 6px;

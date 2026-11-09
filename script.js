@@ -20,8 +20,8 @@ btn.addEventListener('click', () => {
   const burgerBtn = document.getElementById('burgerBtn');
   const burgerPanel = document.getElementById('burgerPanel');
   if (!burgerBtn || !burgerPanel) return;
-  function open() { burgerPanel.hidden = false; burgerBtn.classList.add('active'); burgerBtn.setAttribute('aria-expanded', 'true'); }
-  function close() { burgerPanel.hidden = true; burgerBtn.classList.remove('active'); burgerBtn.setAttribute('aria-expanded', 'false'); }
+  function open() { burgerPanel.hidden = false; burgerBtn.classList.add('open'); burgerBtn.setAttribute('aria-expanded', 'true'); }
+  function close() { burgerPanel.hidden = true; burgerBtn.classList.remove('open'); burgerBtn.setAttribute('aria-expanded', 'false'); }
   burgerBtn.addEventListener('click', e => {
     e.stopPropagation();
     burgerPanel.hidden ? open() : close();
@@ -29,6 +29,36 @@ btn.addEventListener('click', () => {
   burgerPanel.addEventListener('click', e => e.stopPropagation());
   document.addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+// Current-page indicator in the header nav (including the burger menu)
+(function () {
+  const navLinks = document.querySelectorAll('header.site nav > a');
+  const burgerBtn = document.getElementById('burgerBtn');
+  const burgerLinks = document.querySelectorAll('.burger-panel a');
+  if (!navLinks.length && !burgerLinks.length) return;
+
+  const fileOf = href => (href || '').split('#')[0].split('/').pop();
+  let current = fileOf(location.pathname) || 'index.html';
+  // case studies are a sub-page of Work, so treat them as "Work" for this purpose
+  const currentForNav = /^case-\d+\.html$/.test(current) ? 'work.html' : current;
+
+  navLinks.forEach(a => {
+    if (fileOf(a.getAttribute('href')) === currentForNav) {
+      a.classList.add('nav-current');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+
+  let matchedInBurger = false;
+  burgerLinks.forEach(a => {
+    if (fileOf(a.getAttribute('href')) === current) {
+      a.classList.add('nav-current');
+      a.setAttribute('aria-current', 'page');
+      matchedInBurger = true;
+    }
+  });
+  if (matchedInBurger && burgerBtn) burgerBtn.classList.add('nav-current');
 })();
 
 // Reveal on scroll
