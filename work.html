@@ -159,24 +159,24 @@
           const first = values[0];
           const rest = values.slice(1);
 
-          const firstChip = `
-            <button type="button" class="sk-active-chip" data-remove="${first}" data-sub="true">
-              ${g}: ${first}<span class="sk-active-chip-x">✕</span>
-            </button>
-          `;
-
-          if (rest.length === 0) return firstChip;
-
-          const open = openMoreGroups.has(g);
-          const subPills = rest.map(v => `
+          const label = `<span class="sk-active-group-label">${g}:</span>`;
+          const chipFor = v => `
             <span class="sk-active-subchip">
               ${v}<button type="button" class="sk-active-chip-x" data-remove-sub="${v}" aria-label="Remove ${v}">✕</button>
             </span>
-          `).join('');
+          `;
+
+          if (rest.length === 0) {
+            return `<span class="sk-active-chip-group">${label}${chipFor(first)}</span>`;
+          }
+
+          const open = openMoreGroups.has(g);
+          const subPills = rest.map(chipFor).join('');
 
           return `
             <span class="sk-active-chip-group">
-              ${firstChip}
+              ${label}
+              ${chipFor(first)}
               <button type="button" class="sk-more-btn${open ? ' active' : ''}" data-more-group="${g}">
                 +${rest.length} more<span class="sk-active-chip-caret">${open ? '⌃' : '⌄'}</span>
               </button>

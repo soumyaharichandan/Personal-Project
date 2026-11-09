@@ -303,6 +303,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .sk-active-chip-x:hover { opacity: 1; }
 .sk-active-chip-caret { font-size: 9px; opacity: .6; }
 .sk-active-chip-group { display: inline-flex; align-items: center; gap: 6px; position: relative; }
+.sk-active-group-label { font-family: var(--mono); font-size: 11px; letter-spacing: .03em; color: var(--muted); }
 .sk-more-btn {
   display: inline-flex; align-items: center; gap: 5px;
   font-family: var(--mono); font-size: 11px; letter-spacing: .03em;
