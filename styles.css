@@ -40,6 +40,22 @@ nav a { color: var(--muted); transition: color .2s; }
 nav a:hover { color: var(--fg); }
 #theme { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 18px; }
 #theme:hover { color: var(--fg); }
+.burger-menu { position: relative; display: flex; }
+.burger-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 5px;
+  background: none; color: var(--muted); cursor: pointer; font-size: 14px; line-height: 1;
+  transition: border-color .2s, color .2s;
+}
+.burger-btn:hover, .burger-btn.active { border-color: var(--fg); color: var(--fg); }
+.burger-panel {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 30; min-width: 160px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 6px;
+  box-shadow: 0 16px 36px -16px rgba(0,0,0,.3);
+}
+.burger-panel[hidden] { display: none; }
+.burger-panel a { display: block; padding: 8px 10px; border-radius: 5px; font-family: var(--mono); font-size: 13px; color: var(--fg); }
+.burger-panel a:hover { background: var(--bg); }
 
 /* Hero */
 .hero-art { position: relative; height: clamp(420px, 56vw, 680px); overflow: hidden; background: #fdfdfc; border-bottom: 1px solid var(--line); cursor: none; }

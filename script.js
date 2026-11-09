@@ -15,6 +15,22 @@ btn.addEventListener('click', () => {
   paint();
 });
 
+// Burger menu (secondary nav links, e.g. Lab)
+(function () {
+  const burgerBtn = document.getElementById('burgerBtn');
+  const burgerPanel = document.getElementById('burgerPanel');
+  if (!burgerBtn || !burgerPanel) return;
+  function open() { burgerPanel.hidden = false; burgerBtn.classList.add('active'); burgerBtn.setAttribute('aria-expanded', 'true'); }
+  function close() { burgerPanel.hidden = true; burgerBtn.classList.remove('active'); burgerBtn.setAttribute('aria-expanded', 'false'); }
+  burgerBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    burgerPanel.hidden ? open() : close();
+  });
+  burgerPanel.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

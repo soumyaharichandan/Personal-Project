@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab — Soumya Ranjan Harichandan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a href="index.html" class="logo">Soumya <span>Harichandan</span></a>
+      <nav>
+        <a href="work.html">Work</a>
+        <a href="notes.html">Notebooks</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+        <div class="burger-menu">
+          <button type="button" class="burger-btn" id="burgerBtn" aria-haspopup="true" aria-expanded="false" aria-label="More">☰</button>
+          <div class="burger-panel" id="burgerPanel" hidden>
+            <a href="lab.html">Lab</a>
+          </div>
+        </div>
+        <button id="theme" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cs-hero reveal">
+      <p class="eyebrow">In the lab</p>
+      <h1>What I'm building</h1>
+    </div>
+    <div class="lab reveal" style="margin-top:32px;padding-bottom:96px">
+      <article>
+        <div class="row"><h3>Side project one</h3><span class="badge">BUILDING</span></div>
+        <p>A short description of an experiment or app you're working on.</p>
+        <div class="stack"><span>TAURI</span><span>RUST</span><span>LOCAL-FIRST</span></div>
+      </article>
+      <article>
+        <div class="row"><h3>This portfolio</h3><span class="badge">LIVE</span></div>
+        <p>Designed and built end-to-end. The site itself is a case study.</p>
+        <div class="stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+      </article>
+    </div>
+  </main>
+  <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

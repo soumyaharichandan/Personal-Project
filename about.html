@@ -18,6 +18,12 @@
         <a href="notes.html">Notebooks</a>
         <a href="about.html">About</a>
         <a href="index.html#contact">Contact</a>
+        <div class="burger-menu">
+          <button type="button" class="burger-btn" id="burgerBtn" aria-haspopup="true" aria-expanded="false" aria-label="More">☰</button>
+          <div class="burger-panel" id="burgerPanel" hidden>
+            <a href="lab.html">Lab</a>
+          </div>
+        </div>
         <button id="theme" aria-label="Toggle theme">☾</button>
       </nav>
     </div>
@@ -96,7 +102,7 @@
     </div>
 
     <section id="lab" style="margin-top:64px;border-top:1px solid var(--line);padding-top:56px">
-      <div class="sec-head reveal"><div><span class="label">In the lab</span><h2>What I'm building</h2></div><a class="link-animated" href="#">View all lab works <span class="arrow">→</span></a></div>
+      <div class="sec-head reveal"><div><span class="label">In the lab</span><h2>What I'm building</h2></div><a class="link-animated" href="lab.html">View all lab works <span class="arrow">→</span></a></div>
       <div class="lab reveal">
         <article><div class="row"><h3>Side project one</h3><span class="badge">BUILDING</span></div><p>A short description of an experiment or app you're working on.</p><div class="stack"><span>TAURI</span><span>RUST</span><span>LOCAL-FIRST</span></div></article>
         <article><div class="row"><h3>This portfolio</h3><span class="badge">LIVE</span></div><p>Designed and built end-to-end. The site itself is a case study.</p><div class="stack"><span>HTML</span><span>CSS</span><span>JS</span></div></article>
