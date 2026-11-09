@@ -108,13 +108,79 @@
       <div class="wrap reveal">
         <h2>Let's build something good.</h2>
         <a class="mail" href="mailto:soumya.chandan123@gmail.com">soumya.chandan123@gmail.com</a>
-        <div class="socials"><a href="https://www.linkedin.com/in/soumya-r-h/" target="_blank" rel="noopener">LinkedIn</a><a href="#">Behance</a><a href="https://github.com/soumyaharichandan" target="_blank" rel="noopener">GitHub</a><a class="link-animated" href="resume.pdf" target="_blank" rel="noopener">Resume <span class="arrow">↗</span></a></div>
+        <div class="socials"><a href="https://www.linkedin.com/in/soumya-r-h/" target="_blank" rel="noopener">LinkedIn</a><a href="#">Behance</a><a href="https://github.com/soumyaharichandan" target="_blank" rel="noopener">GitHub</a><button type="button" class="link-animated" id="resumeOpenBtn">Resume <span class="arrow">↗</span></button></div>
       </div>
     </section>
   </main>
 
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal-backdrop" data-resume-close></div>
+    <div class="resume-modal-panel" role="dialog" aria-modal="true" aria-label="Résumé">
+      <div class="resume-modal-head">
+        <span>Résumé</span>
+        <div class="resume-modal-actions">
+          <a href="resume.pdf" download class="resume-dl">Download ↓</a>
+          <button type="button" class="resume-close" data-resume-close aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="resume-frame" id="resumeFrame">
+        <p class="resume-loading" id="resumeLoading">Loading résumé…</p>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    (function () {
+      const openBtn = document.getElementById('resumeOpenBtn');
+      const modal = document.getElementById('resumeModal');
+      const frame = document.getElementById('resumeFrame');
+      const loading = document.getElementById('resumeLoading');
+      if (!openBtn || !modal) return;
+      let rendered = false;
+
+      async function renderResume() {
+        if (rendered) return;
+        rendered = true;
+        try {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          const doc = await window.pdfjsLib.getDocument('resume.pdf').promise;
+          if (loading) loading.remove();
+          for (let i = 1; i <= doc.numPages; i++) {
+            const page = await doc.getPage(i);
+            const scale = (frame.clientWidth || 760) / page.getViewport({ scale: 1 }).width;
+            const viewport = page.getViewport({ scale });
+            const canvas = document.createElement('canvas');
+            canvas.className = 'resume-page';
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            frame.appendChild(canvas);
+            await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+          }
+        } catch (err) {
+          rendered = false;
+          if (loading) loading.textContent = "Couldn't load the preview — use Download instead.";
+        }
+      }
+
+      function open() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        renderResume();
+      }
+      function close() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      openBtn.addEventListener('click', open);
+      modal.querySelectorAll('[data-resume-close]').forEach(el => el.addEventListener('click', close));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 </body>
 </html>
 
