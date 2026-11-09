@@ -265,7 +265,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
   padding: 9px 14px; border: 1px solid var(--line); background: var(--card); color: var(--fg);
-  border-radius: 999px; cursor: pointer; transition: border-color .2s, color .2s;
+  border-radius: 5px; cursor: pointer; transition: border-color .2s, color .2s;
 }
 .sk-filter-pill:hover { border-color: var(--fg); }
 .sk-filter-pill.active { border-color: var(--fg); background: var(--fg); color: var(--bg); }
