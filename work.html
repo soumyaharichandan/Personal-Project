@@ -66,8 +66,14 @@
           "Testing & Validation",
           "Implementation & Handoff",
           "Design QA"
+        ],
+        "By Product Architecture": [
+          "Core Foundation / Ecosystem UX (Platform level)",
+          "Domain / Business Unit UX (Pillar level)"
         ]
       };
+      // group categories always appear in the filter, even if no project is tagged with them yet
+      Object.keys(SUBSTAGES).forEach(k => tagSet.add(k));
       const selectedTags = new Set();
       const selectedSubstages = new Set();
 
