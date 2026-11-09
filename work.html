@@ -106,6 +106,7 @@
       };
       const selectedTags = new Set();
       const selectedSubstages = new Set();
+      const expandedChipGroups = new Set();
 
       function renderPopover() {
         // only the multi-stage categories are shown — flat single-value tags were removed
@@ -145,15 +146,39 @@
 
       function renderActiveFilters() {
         if (!activeFiltersEl) return;
-        const chips = [
-          ...[...selectedTags].map(v => ({ v, sub: false, label: v })),
-          ...[...selectedSubstages].map(v => ({ v, sub: true, label: `${groupOf(v)}: ${v}` }))
-        ];
-        activeFiltersEl.innerHTML = chips.map(({ v, sub, label }) => `
-          <button type="button" class="sk-active-chip" data-remove="${v}" data-sub="${sub}">
-            ${label}<span class="sk-active-chip-x">✕</span>
+
+        // group selected substages by their parent category
+        const byGroup = {};
+        selectedSubstages.forEach(v => {
+          const g = groupOf(v);
+          (byGroup[g] = byGroup[g] || []).push(v);
+        });
+
+        const groupChips = Object.keys(byGroup).map(g => {
+          const values = byGroup[g];
+          const expanded = expandedChipGroups.has(g);
+          let text;
+          if (values.length === 1) {
+            text = `${g}: ${values[0]}`;
+          } else if (expanded) {
+            text = `${g}: ${values.join(', ')}`;
+          } else {
+            text = `${g}: ${values[0]} +${values.length - 1} more`;
+          }
+          return `
+            <button type="button" class="sk-active-chip" data-chip-group="${g}" data-expandable="${values.length > 1}">
+              ${text}<span class="sk-active-chip-x" data-remove-group="${g}">✕</span>
+            </button>
+          `;
+        });
+
+        const tagChips = [...selectedTags].map(v => `
+          <button type="button" class="sk-active-chip" data-remove="${v}" data-sub="false">
+            ${v}<span class="sk-active-chip-x">✕</span>
           </button>
-        `).join('');
+        `);
+
+        activeFiltersEl.innerHTML = [...groupChips, ...tagChips].join('');
       }
 
       function removeFilter(value, isSub) {
@@ -163,6 +188,18 @@
           isSub ? `input[data-sub][value="${CSS.escape(value)}"]` : `input[value="${CSS.escape(value)}"]:not([data-sub])`
         );
         if (cb) cb.checked = false;
+        updateLabel();
+        renderActiveFilters();
+        apply();
+      }
+
+      function removeFilterGroup(group) {
+        SUBSTAGES[group].forEach(v => {
+          selectedSubstages.delete(v);
+          const cb = catPopover.querySelector(`input[data-sub][value="${CSS.escape(v)}"]`);
+          if (cb) cb.checked = false;
+        });
+        expandedChipGroups.delete(group);
         updateLabel();
         renderActiveFilters();
         apply();
@@ -221,6 +258,17 @@
       activeFiltersEl && activeFiltersEl.addEventListener('click', e => {
         const chip = e.target.closest('.sk-active-chip');
         if (!chip) return;
+        const removeGroupTarget = e.target.closest('[data-remove-group]');
+        if (chip.dataset.chipGroup) {
+          const group = chip.dataset.chipGroup;
+          if (removeGroupTarget) {
+            removeFilterGroup(group);
+          } else if (chip.dataset.expandable === 'true') {
+            expandedChipGroups.has(group) ? expandedChipGroups.delete(group) : expandedChipGroups.add(group);
+            renderActiveFilters();
+          }
+          return;
+        }
         removeFilter(chip.dataset.remove, chip.dataset.sub === 'true');
       });
       document.addEventListener('click', () => closePopover());
@@ -229,6 +277,7 @@
       clearBtn.addEventListener('click', () => {
         selectedTags.clear();
         selectedSubstages.clear();
+        expandedChipGroups.clear();
         searchEl.value = '';
         catPopover.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         updateLabel();
