@@ -28,7 +28,13 @@
     <div class="sk-root reveal" style="padding-bottom:96px">
       <div class="sk-filter-bar">
         <input type="search" id="skSearch" class="sk-search" placeholder="Search work…" aria-label="Search work">
-        <select id="skFilterSelect" class="sk-filter-select" aria-label="Filter by tag"></select>
+        <div class="sk-filter-group">
+          <button type="button" class="sk-filter-pill" id="skCategoryBtn" aria-expanded="false" aria-haspopup="true">
+            <span id="skCategoryLabel">Category</span><span class="sk-filter-caret">⌄</span>
+          </button>
+          <div class="sk-filter-popover" id="skCategoryPopover" hidden></div>
+        </div>
+        <button type="button" class="sk-filter-clear" id="skFilterClear" hidden>✕ Clear all</button>
       </div>
       <div class="sk-shelf" id="skShelf"></div>
       <p class="sk-empty" id="skEmpty">No projects match that search.</p>
@@ -39,41 +45,90 @@
   <script>
     (function () {
       const shelf = document.getElementById('skShelf');
-      const selectEl = document.getElementById('skFilterSelect');
       const searchEl = document.getElementById('skSearch');
       const emptyEl = document.getElementById('skEmpty');
-      if (!shelf || !selectEl || !searchEl) return;
+      const catBtn = document.getElementById('skCategoryBtn');
+      const catLabel = document.getElementById('skCategoryLabel');
+      const catPopover = document.getElementById('skCategoryPopover');
+      const clearBtn = document.getElementById('skFilterClear');
+      if (!shelf || !searchEl || !catBtn || !catPopover) return;
       const cells = [...shelf.querySelectorAll('.sk-cell')];
       const tagSet = new Set();
       cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
+      const selectedTags = new Set();
 
-      function renderOptions() {
-        const allOpt = `<option value="">Filter</option>`;
-        const tagOpts = [...tagSet].sort().map(t => `<option value="${t}">${t}</option>`).join('');
-        selectEl.innerHTML = allOpt + tagOpts;
+      function renderPopover() {
+        catPopover.innerHTML = [...tagSet].sort().map(t => `
+          <label class="sk-filter-option">
+            <input type="checkbox" value="${t}">
+            <span>${t}</span>
+          </label>
+        `).join('');
+      }
+
+      function updateLabel() {
+        if (selectedTags.size === 0) {
+          catLabel.textContent = 'Category';
+        } else if (selectedTags.size === 1) {
+          catLabel.textContent = [...selectedTags][0];
+        } else {
+          catLabel.textContent = `Category (${selectedTags.size})`;
+        }
+        catBtn.classList.toggle('active', selectedTags.size > 0);
       }
 
       function apply() {
         const term = searchEl.value.trim().toLowerCase();
-        const activeTag = selectEl.value || null;
         let visible = 0;
         cells.forEach(c => {
           const title = (c.dataset.title || '').toLowerCase();
           const kick = (c.dataset.kick || '').toLowerCase();
           const tags = (c.dataset.tags || '').split(',');
           const matchesTerm = !term || title.includes(term) || kick.includes(term);
-          const matchesTag = !activeTag || tags.includes(activeTag);
+          const matchesTag = selectedTags.size === 0 || tags.some(t => selectedTags.has(t));
           const show = matchesTerm && matchesTag;
           c.classList.toggle('sk-hidden', !show);
           if (show) visible++;
         });
         emptyEl.classList.toggle('show', visible === 0);
+        clearBtn.hidden = term === '' && selectedTags.size === 0;
       }
 
-      selectEl.addEventListener('change', apply);
+      function openPopover() {
+        catPopover.hidden = false;
+        catBtn.setAttribute('aria-expanded', 'true');
+      }
+      function closePopover() {
+        catPopover.hidden = true;
+        catBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      catBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        catPopover.hidden ? openPopover() : closePopover();
+      });
+      catPopover.addEventListener('click', e => e.stopPropagation());
+      catPopover.addEventListener('change', e => {
+        const cb = e.target;
+        if (cb.type !== 'checkbox') return;
+        cb.checked ? selectedTags.add(cb.value) : selectedTags.delete(cb.value);
+        updateLabel();
+        apply();
+      });
+      document.addEventListener('click', () => closePopover());
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopover(); });
+
+      clearBtn.addEventListener('click', () => {
+        selectedTags.clear();
+        searchEl.value = '';
+        catPopover.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        updateLabel();
+        apply();
+      });
       searchEl.addEventListener('input', apply);
 
-      renderOptions();
+      renderPopover();
+      updateLabel();
       apply();
     })();
   </script>
