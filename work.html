@@ -48,7 +48,7 @@
       cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
 
       function renderOptions() {
-        const allOpt = `<option value="">All tags</option>`;
+        const allOpt = `<option value="">Filter</option>`;
         const tagOpts = [...tagSet].sort().map(t => `<option value="${t}">${t}</option>`).join('');
         selectEl.innerHTML = allOpt + tagOpts;
       }
