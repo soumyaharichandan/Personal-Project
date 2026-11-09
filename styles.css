@@ -199,6 +199,7 @@ blockquote span { color: var(--muted); font-size: 14px; }
 .cf-submit:hover { opacity: .85; }
 .cf-status { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 0; }
 .cf-status-ok { color: var(--accent); }
+.cf-status-err { color: #c0392b; }
 @media (max-width: 560px) { .cf-row { grid-template-columns: 1fr; } }
 .socials { margin-top: 28px; display: flex; gap: 24px; justify-content: center; font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .socials a:hover { color: var(--fg); }

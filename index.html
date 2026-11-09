@@ -109,7 +109,7 @@
         <h2>Let's build something good.</h2>
         <a class="mail" href="mailto:soumya.chandan123@gmail.com">soumya.chandan123@gmail.com</a>
 
-        <form class="contact-form" id="contactForm" action="https://script.google.com/macros/s/AKfycbxURQ5xVU6sc-uF1V8zgF3cp65sSAyNLhSkMHnK4VoSHYtgZTDw9vmxw9D4E9KPE3Yd-w/exec" method="POST" target="hiddenFormFrame">
+        <form class="contact-form" id="contactForm" action="https://script.google.com/macros/s/AKfycbxURQ5xVU6sc-uF1V8zgF3cp65sSAyNLhSkMHnK4VoSHYtgZTDw9vmxw9D4E9KPE3Yd-w/exec" method="POST">
           <div class="cf-row">
             <label class="cf-field"><span>Name</span><input type="text" name="entry.1096800602" autocomplete="name" required></label>
             <label class="cf-field"><span>Email</span><input type="email" name="entry.206578783" autocomplete="email" required></label>
@@ -136,7 +136,6 @@
           <button type="submit" class="cf-submit">Send message</button>
           <p class="cf-status" id="cfStatus" hidden></p>
         </form>
-        <iframe name="hiddenFormFrame" id="hiddenFormFrame" style="display:none" aria-hidden="true" title="form submission target"></iframe>
 
         <div class="socials"><a href="https://www.linkedin.com/in/soumya-r-h/" target="_blank" rel="noopener">LinkedIn</a><a href="#">Behance</a><a href="https://github.com/soumyaharichandan" target="_blank" rel="noopener">GitHub</a><button type="button" class="link-animated" id="resumeOpenBtn">Resume <span class="arrow">↗</span></button></div>
       </div>
@@ -162,29 +161,36 @@
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
   <script>
-    // Contact form — posts straight to the Google Form's response endpoint
-    // via a hidden iframe (so the page never navigates away), and shows a
-    // simple sent/not-sent status once the iframe finishes loading.
+    // Contact form — posts to the Apps Script endpoint via fetch() rather
+    // than a real <form> submission. A native form POST to a cross-origin
+    // target gets silently blocked by the page's Content-Security-Policy
+    // (form-action), with no request ever leaving the browser and no JS
+    // error to catch it. fetch() is governed by connect-src instead, which
+    // does allow this request through, so submission is done that way.
     (function () {
       const form = document.getElementById('contactForm');
-      const frame = document.getElementById('hiddenFormFrame');
       const status = document.getElementById('cfStatus');
-      if (!form || !frame || !status) return;
-      let submitting = false;
+      if (!form || !status) return;
 
-      form.addEventListener('submit', () => {
-        submitting = true;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
         status.hidden = false;
         status.textContent = 'Sending…';
         status.className = 'cf-status';
-      });
 
-      frame.addEventListener('load', () => {
-        if (!submitting) return; // ignore the iframe's own initial blank load
-        submitting = false;
-        status.textContent = "Thanks — got it. I'll get back to you soon.";
-        status.className = 'cf-status cf-status-ok';
-        form.reset();
+        const params = new URLSearchParams(new FormData(form));
+        fetch(form.action, {
+          method: 'POST',
+          mode: 'no-cors', // response is opaque cross-origin; we only need the request to land
+          body: params
+        }).then(() => {
+          status.textContent = "Thanks — got it. I'll get back to you soon.";
+          status.className = 'cf-status cf-status-ok';
+          form.reset();
+        }).catch(() => {
+          status.textContent = 'Something went wrong — please email me directly instead.';
+          status.className = 'cf-status cf-status-err';
+        });
       });
     })();
   </script>
