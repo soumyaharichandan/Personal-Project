@@ -194,6 +194,11 @@
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        // drop the #resume hash so it doesn't linger in the URL and
+        // re-open the modal on refresh or when navigating back here
+        if (location.hash === '#resume') {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
       }
       openBtn.addEventListener('click', open);
       modal.querySelectorAll('[data-resume-close]').forEach(el => el.addEventListener('click', close));
