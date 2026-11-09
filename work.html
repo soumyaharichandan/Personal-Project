@@ -157,18 +157,33 @@
         const groupChips = Object.keys(byGroup).map(g => {
           const values = byGroup[g];
           const expanded = expandedChipGroups.has(g);
-          let text;
+
           if (values.length === 1) {
-            text = `${g}: ${values[0]}`;
-          } else if (expanded) {
-            text = `${g}: ${values.join(', ')}`;
-          } else {
-            text = `${g}: ${values[0]} +${values.length - 1} more`;
+            return `
+              <button type="button" class="sk-active-chip" data-remove="${values[0]}" data-sub="true">
+                ${g}: ${values[0]}<span class="sk-active-chip-x">✕</span>
+              </button>
+            `;
           }
+
+          if (!expanded) {
+            return `
+              <button type="button" class="sk-active-chip" data-chip-group="${g}" data-expandable="true">
+                ${g}: ${values[0]} +${values.length - 1} more<span class="sk-active-chip-caret">⌄</span>
+              </button>
+            `;
+          }
+
+          const subPills = values.map(v => `
+            <span class="sk-active-subchip">
+              ${v}<button type="button" class="sk-active-chip-x" data-remove-sub="${v}" aria-label="Remove ${v}">✕</button>
+            </span>
+          `).join('');
           return `
-            <button type="button" class="sk-active-chip" data-chip-group="${g}" data-expandable="${values.length > 1}">
-              ${text}<span class="sk-active-chip-x" data-remove-group="${g}">✕</span>
-            </button>
+            <span class="sk-active-chip sk-active-chip-group">
+              <button type="button" class="sk-active-chip-glabel" data-chip-group="${g}" data-expandable="true">${g}:<span class="sk-active-chip-caret">⌃</span></button>
+              ${subPills}
+            </span>
           `;
         });
 
@@ -188,18 +203,6 @@
           isSub ? `input[data-sub][value="${CSS.escape(value)}"]` : `input[value="${CSS.escape(value)}"]:not([data-sub])`
         );
         if (cb) cb.checked = false;
-        updateLabel();
-        renderActiveFilters();
-        apply();
-      }
-
-      function removeFilterGroup(group) {
-        SUBSTAGES[group].forEach(v => {
-          selectedSubstages.delete(v);
-          const cb = catPopover.querySelector(`input[data-sub][value="${CSS.escape(v)}"]`);
-          if (cb) cb.checked = false;
-        });
-        expandedChipGroups.delete(group);
         updateLabel();
         renderActiveFilters();
         apply();
@@ -256,20 +259,27 @@
         apply();
       });
       activeFiltersEl && activeFiltersEl.addEventListener('click', e => {
-        const chip = e.target.closest('.sk-active-chip');
-        if (!chip) return;
-        const removeGroupTarget = e.target.closest('[data-remove-group]');
-        if (chip.dataset.chipGroup) {
-          const group = chip.dataset.chipGroup;
-          if (removeGroupTarget) {
-            removeFilterGroup(group);
-          } else if (chip.dataset.expandable === 'true') {
-            expandedChipGroups.has(group) ? expandedChipGroups.delete(group) : expandedChipGroups.add(group);
-            renderActiveFilters();
-          }
+        const removeSubTarget = e.target.closest('[data-remove-sub]');
+        if (removeSubTarget) {
+          removeFilter(removeSubTarget.dataset.removeSub, true);
           return;
         }
-        removeFilter(chip.dataset.remove, chip.dataset.sub === 'true');
+        const glabel = e.target.closest('.sk-active-chip-glabel');
+        if (glabel) {
+          expandedChipGroups.delete(glabel.dataset.chipGroup);
+          renderActiveFilters();
+          return;
+        }
+        const collapsedGroupChip = e.target.closest('.sk-active-chip[data-chip-group]');
+        if (collapsedGroupChip) {
+          expandedChipGroups.add(collapsedGroupChip.dataset.chipGroup);
+          renderActiveFilters();
+          return;
+        }
+        const simpleChip = e.target.closest('.sk-active-chip[data-remove]');
+        if (simpleChip) {
+          removeFilter(simpleChip.dataset.remove, simpleChip.dataset.sub === 'true');
+        }
       });
       document.addEventListener('click', () => closePopover());
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopover(); });
