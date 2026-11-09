@@ -289,8 +289,9 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   padding: 9px 12px; border: none; background: none; color: var(--muted); cursor: pointer;
 }
 .sk-filter-clear:hover { color: var(--fg); }
-.sk-active-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.sk-active-filters:empty { margin-top: 0; }
+.sk-active-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.sk-active-row:has(> .sk-filter-clear[hidden]):has(> .sk-active-filters:empty) { margin-top: 0; }
+.sk-active-filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .sk-active-chip {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--mono); font-size: 11px; letter-spacing: .03em;
