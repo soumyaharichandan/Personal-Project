@@ -61,7 +61,16 @@
       </svg>
       <p>No notes match that search.</p>
     </div>
-    <nav class="pg-pagination" id="nbPagination" aria-label="Pagination" hidden></nav>
+    <div class="pg-bar" id="nbPgBar">
+      <label class="pg-size"><span>Show</span>
+        <select id="nbPerPage" aria-label="Items per page">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="5">5 (all)</option>
+        </select>
+      </label>
+      <nav class="pg-pagination" id="nbPagination" aria-label="Pagination" hidden></nav>
+    </div>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
@@ -80,7 +89,19 @@
       const tagSet = new Set();
       cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
       const selectedTags = new Set();
-      const PER_PAGE = 3;
+      const pgBar = document.getElementById('nbPgBar');
+      const perPageSelect = document.getElementById('nbPerPage');
+      const PP_KEY = 'pgPerPage:notes';
+      let PER_PAGE = 3;
+      try { const saved = parseInt(localStorage.getItem(PP_KEY), 10); if (saved) PER_PAGE = saved; } catch (e) {}
+      if (perPageSelect) {
+        perPageSelect.value = String(PER_PAGE);
+        perPageSelect.addEventListener('change', () => {
+          PER_PAGE = parseInt(perPageSelect.value, 10) || PER_PAGE;
+          try { localStorage.setItem(PP_KEY, String(PER_PAGE)); } catch (e) {}
+          apply();
+        });
+      }
       const pagination = skPagination(document.getElementById('nbPagination'), page => {
         const matched = cells.filter(c => !c.classList.contains('sk-hidden'));
         matched.forEach((c, i) => c.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
@@ -135,6 +156,7 @@
         });
         emptyEl.classList.toggle('show', visible === 0);
         clearBtn.hidden = term === '' && selectedTags.size === 0;
+        if (pgBar) pgBar.hidden = visible === 0;
         pagination.setCount(visible, PER_PAGE);
       }
 

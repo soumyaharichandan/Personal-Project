@@ -55,18 +55,42 @@
         <div class="stack"><span>LLMS</span><span>AGENTS</span><span>EVALS</span></div>
       </article>
     </div>
-    <nav class="pg-pagination" id="learnPagination" aria-label="Pagination" hidden></nav>
+    <div class="pg-bar" id="learnPgBar">
+      <label class="pg-size"><span>Show</span>
+        <select id="learnPerPage" aria-label="Items per page">
+          <option value="1">1</option>
+          <option value="2">2 (all)</option>
+        </select>
+      </label>
+      <nav class="pg-pagination" id="learnPagination" aria-label="Pagination" hidden></nav>
+    </div>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
   <script>
     (function () {
       const items = [...document.querySelectorAll('.learn > .learn-card')];
-      const PER_PAGE = 1;
+      const pgBar = document.getElementById('learnPgBar');
+      const perPageSelect = document.getElementById('learnPerPage');
+      const PP_KEY = 'pgPerPage:learning';
+      let PER_PAGE = 1;
+      try { const saved = parseInt(localStorage.getItem(PP_KEY), 10); if (saved) PER_PAGE = saved; } catch (e) {}
+      function render() {
+        if (pgBar) pgBar.hidden = items.length === 0;
+        pagination.setCount(items.length, PER_PAGE);
+      }
       const pagination = skPagination(document.getElementById('learnPagination'), page => {
         items.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
       });
-      pagination.setCount(items.length, PER_PAGE);
+      if (perPageSelect) {
+        perPageSelect.value = String(PER_PAGE);
+        perPageSelect.addEventListener('change', () => {
+          PER_PAGE = parseInt(perPageSelect.value, 10) || PER_PAGE;
+          try { localStorage.setItem(PP_KEY, String(PER_PAGE)); } catch (e) {}
+          render();
+        });
+      }
+      render();
     })();
   </script>
 </body>

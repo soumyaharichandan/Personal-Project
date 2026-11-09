@@ -220,7 +220,15 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 
 /* Numbered pagination for list/grid pages (work, notebooks, lab, learning, reading list) */
 .pg-hidden { display: none; }
-.pg-pagination { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 40px; }
+.pg-bar { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; flex-wrap: wrap; }
+.pg-bar[hidden] { display: none; }
+.pg-size { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+.pg-size select {
+  font-family: var(--mono); font-size: 12px; color: var(--fg); background: var(--card);
+  border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px; cursor: pointer; transition: border-color .2s;
+}
+.pg-size select:hover, .pg-size select:focus { border-color: var(--accent); outline: none; }
+.pg-pagination { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 0; }
 .pg-pagination[hidden] { display: none; }
 .pg-arrow {
   font-family: var(--mono); font-size: 12px; letter-spacing: .04em;

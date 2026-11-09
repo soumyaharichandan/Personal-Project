@@ -46,18 +46,43 @@
         <div class="stack"><span>TAG</span><span>TAG</span></div>
       </article>
     </div>
-    <nav class="pg-pagination" id="libPagination" aria-label="Pagination" hidden></nav>
+    <div class="pg-bar" id="libPgBar">
+      <label class="pg-size"><span>Show</span>
+        <select id="libPerPage" aria-label="Items per page">
+          <option value="1">1 (all)</option>
+          <option value="2">2</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <nav class="pg-pagination" id="libPagination" aria-label="Pagination" hidden></nav>
+    </div>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
   <script>
     (function () {
       const items = [...document.querySelectorAll('.lib-grid > .learn-card')];
-      const PER_PAGE = 1;
+      const pgBar = document.getElementById('libPgBar');
+      const perPageSelect = document.getElementById('libPerPage');
+      const PP_KEY = 'pgPerPage:reading-list';
+      let PER_PAGE = 1;
+      try { const saved = parseInt(localStorage.getItem(PP_KEY), 10); if (saved) PER_PAGE = saved; } catch (e) {}
+      function render() {
+        if (pgBar) pgBar.hidden = items.length === 0;
+        pagination.setCount(items.length, PER_PAGE);
+      }
       const pagination = skPagination(document.getElementById('libPagination'), page => {
         items.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
       });
-      pagination.setCount(items.length, PER_PAGE);
+      if (perPageSelect) {
+        perPageSelect.value = String(PER_PAGE);
+        perPageSelect.addEventListener('change', () => {
+          PER_PAGE = parseInt(perPageSelect.value, 10) || PER_PAGE;
+          try { localStorage.setItem(PP_KEY, String(PER_PAGE)); } catch (e) {}
+          render();
+        });
+      }
+      render();
     })();
   </script>
 </body>
