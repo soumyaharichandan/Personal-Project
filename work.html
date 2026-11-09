@@ -139,15 +139,19 @@
         catBtn.classList.toggle('active', total > 0);
       }
 
+      function groupOf(substageValue) {
+        return Object.keys(SUBSTAGES).find(g => SUBSTAGES[g].includes(substageValue)) || '';
+      }
+
       function renderActiveFilters() {
         if (!activeFiltersEl) return;
         const chips = [
-          ...[...selectedTags].map(v => ({ v, sub: false })),
-          ...[...selectedSubstages].map(v => ({ v, sub: true }))
+          ...[...selectedTags].map(v => ({ v, sub: false, label: v })),
+          ...[...selectedSubstages].map(v => ({ v, sub: true, label: `${groupOf(v)}: ${v}` }))
         ];
-        activeFiltersEl.innerHTML = chips.map(({ v, sub }) => `
+        activeFiltersEl.innerHTML = chips.map(({ v, sub, label }) => `
           <button type="button" class="sk-active-chip" data-remove="${v}" data-sub="${sub}">
-            ${v}<span class="sk-active-chip-x">✕</span>
+            ${label}<span class="sk-active-chip-x">✕</span>
           </button>
         `).join('');
       }
