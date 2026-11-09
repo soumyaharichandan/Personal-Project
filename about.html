@@ -198,6 +198,10 @@
       openBtn.addEventListener('click', open);
       modal.querySelectorAll('[data-resume-close]').forEach(el => el.addEventListener('click', close));
       document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+      // arriving via a link to about.html#resume (e.g. the homepage's
+      // "Resume" link) opens the modal straight away
+      if (location.hash === '#resume') open();
     })();
   </script>
 </body>
