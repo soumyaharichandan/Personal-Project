@@ -25,13 +25,142 @@
 
   <main class="wrap">
     <div class="cs-hero reveal"><p class="eyebrow">From the notebook</p><h1>Notebooks</h1></div>
-    <div class="notes reveal" style="padding-bottom:96px"><a href="#"><span class="label">4 Aug 2026</span><h3>Your first note title goes here</h3></a>
-<a href="#"><span class="label">4 Jul 2026</span><h3>Write the bad version first</h3></a>
-<a href="#"><span class="label">14 Jun 2026</span><h3>Something you learned this year</h3></a>
-<a href="#"><span class="label">8 Jun 2026</span><h3>What I look for when hiring designers</h3></a>
-<a href="#"><span class="label">1 Jun 2026</span><h3>Why I build the thing before I spec it</h3></a></div>
+    <div class="sk-filter-bar reveal">
+      <input type="search" id="nbSearch" class="sk-search" placeholder="Search notebooks…" aria-label="Search notebooks">
+      <div class="sk-filter-group">
+        <button type="button" class="sk-filter-pill" id="nbCategoryBtn" aria-expanded="false" aria-haspopup="true">
+          <span id="nbCategoryLabel">Category</span><span class="sk-filter-caret">⌄</span>
+        </button>
+        <div class="sk-filter-popover" id="nbCategoryPopover" hidden></div>
+      </div>
+    </div>
+    <div class="sk-active-row">
+      <button type="button" class="sk-filter-clear" id="nbFilterClear" hidden>✕ Clear all</button>
+      <div class="sk-active-filters" id="nbActiveFilters"></div>
+    </div>
+    <div class="notes reveal" id="notesList" style="padding-bottom:48px">
+      <a href="#" class="note-cell" data-title="Your first note title goes here" data-tags="General"><span class="label">4 Aug 2026</span><h3>Your first note title goes here</h3></a>
+      <a href="#" class="note-cell" data-title="Write the bad version first" data-tags="Process"><span class="label">4 Jul 2026</span><h3>Write the bad version first</h3></a>
+      <a href="#" class="note-cell" data-title="Something you learned this year" data-tags="Reflection"><span class="label">14 Jun 2026</span><h3>Something you learned this year</h3></a>
+      <a href="#" class="note-cell" data-title="What I look for when hiring designers" data-tags="Hiring"><span class="label">8 Jun 2026</span><h3>What I look for when hiring designers</h3></a>
+      <a href="#" class="note-cell" data-title="Why I build the thing before I spec it" data-tags="Process"><span class="label">1 Jun 2026</span><h3>Why I build the thing before I spec it</h3></a>
+    </div>
+    <div class="sk-empty" id="nbEmpty" style="padding-bottom:48px">
+      <svg class="sk-empty-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="17" cy="17" r="11" stroke="currentColor" stroke-width="2"/>
+        <line x1="25.2" y1="25.2" x2="34" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12.5" y1="17" x2="21.5" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <p>No notes match that search.</p>
+    </div>
   </main>
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const listEl = document.getElementById('notesList');
+      const searchEl = document.getElementById('nbSearch');
+      const emptyEl = document.getElementById('nbEmpty');
+      const catBtn = document.getElementById('nbCategoryBtn');
+      const catLabel = document.getElementById('nbCategoryLabel');
+      const catPopover = document.getElementById('nbCategoryPopover');
+      const clearBtn = document.getElementById('nbFilterClear');
+      const activeFiltersEl = document.getElementById('nbActiveFilters');
+      if (!listEl || !searchEl || !catBtn || !catPopover) return;
+      const cells = [...listEl.querySelectorAll('.note-cell')];
+      const tagSet = new Set();
+      cells.forEach(c => (c.dataset.tags || '').split(',').filter(Boolean).forEach(t => tagSet.add(t)));
+      const selectedTags = new Set();
+
+      function renderPopover() {
+        catPopover.innerHTML = [...tagSet].sort().map(t => `
+          <label class="sk-filter-option">
+            <input type="checkbox" value="${t}">
+            <span>${t}</span>
+          </label>
+        `).join('');
+      }
+
+      function updateLabel() {
+        const total = selectedTags.size;
+        if (total === 0) catLabel.textContent = 'Category';
+        else if (total === 1) catLabel.textContent = [...selectedTags][0];
+        else catLabel.textContent = `Category (${total})`;
+        catBtn.classList.toggle('active', total > 0);
+      }
+
+      function renderActiveFilters() {
+        if (!activeFiltersEl) return;
+        activeFiltersEl.innerHTML = [...selectedTags].map(v => `
+          <button type="button" class="sk-active-chip" data-remove="${v}">
+            ${v}<span class="sk-active-chip-x">✕</span>
+          </button>
+        `).join('');
+      }
+
+      function removeFilter(value) {
+        selectedTags.delete(value);
+        const cb = catPopover.querySelector(`input[value="${CSS.escape(value)}"]`);
+        if (cb) cb.checked = false;
+        updateLabel();
+        renderActiveFilters();
+        apply();
+      }
+
+      function apply() {
+        const term = searchEl.value.trim().toLowerCase();
+        let visible = 0;
+        cells.forEach(c => {
+          const title = (c.dataset.title || '').toLowerCase();
+          const tags = (c.dataset.tags || '').split(',');
+          const matchesTerm = !term || title.includes(term);
+          const matchesTag = selectedTags.size === 0 || tags.some(t => selectedTags.has(t));
+          const show = matchesTerm && matchesTag;
+          c.classList.toggle('sk-hidden', !show);
+          if (show) visible++;
+        });
+        emptyEl.classList.toggle('show', visible === 0);
+        clearBtn.hidden = term === '' && selectedTags.size === 0;
+      }
+
+      function openPopover() { catPopover.hidden = false; catBtn.setAttribute('aria-expanded', 'true'); }
+      function closePopover() { catPopover.hidden = true; catBtn.setAttribute('aria-expanded', 'false'); }
+
+      catBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        catPopover.hidden ? openPopover() : closePopover();
+      });
+      catPopover.addEventListener('click', e => e.stopPropagation());
+      catPopover.addEventListener('change', e => {
+        const cb = e.target;
+        if (cb.type !== 'checkbox') return;
+        cb.checked ? selectedTags.add(cb.value) : selectedTags.delete(cb.value);
+        updateLabel();
+        renderActiveFilters();
+        apply();
+      });
+      activeFiltersEl && activeFiltersEl.addEventListener('click', e => {
+        const chip = e.target.closest('.sk-active-chip[data-remove]');
+        if (chip) removeFilter(chip.dataset.remove);
+      });
+      document.addEventListener('click', () => closePopover());
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopover(); });
+
+      clearBtn.addEventListener('click', () => {
+        selectedTags.clear();
+        searchEl.value = '';
+        catPopover.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        updateLabel();
+        renderActiveFilters();
+        apply();
+      });
+      searchEl.addEventListener('input', apply);
+
+      renderPopover();
+      updateLabel();
+      renderActiveFilters();
+      apply();
+    })();
+  </script>
 </body>
 </html>
