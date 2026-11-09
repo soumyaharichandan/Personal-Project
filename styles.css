@@ -311,7 +311,7 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   padding: 0; border: none; background: none; color: var(--fg);
   text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color .2s;
 }
-.sk-more-btn:hover, .sk-more-btn.active { color: var(--muted); }
+.sk-more-btn:hover, .sk-more-btn.active { color: var(--accent); }
 .sk-more-dropdown {
   position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 140px;
   display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
