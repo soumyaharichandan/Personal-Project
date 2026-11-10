@@ -427,21 +427,6 @@
     ]
   },
   {
-    "id": "half-girlfriend",
-    "title": "Half Girlfriend",
-    "author": "Chetan Bhagat",
-    "publisher": "Rupa Publications",
-    "isbn": "9788129135728",
-    "cover": "covers/half-girlfriend.jpg",
-    "shelf": "read",
-    "progress": 100,
-    "rating": 5,
-    "note": "",
-    "tags": [
-      "Fiction"
-    ]
-  },
-  {
     "id": "teach-your-child-how-to-think",
     "title": "Teach Your Child How to Think",
     "author": "Edward de Bono",
@@ -533,36 +518,6 @@
     "note": "",
     "tags": [
       "Business"
-    ]
-  },
-  {
-    "id": "2-states",
-    "title": "2 States",
-    "author": "Chetan Bhagat",
-    "publisher": "Rupa & Co",
-    "isbn": "9788129115300",
-    "cover": "covers/2-states.jpg",
-    "shelf": "read",
-    "progress": 100,
-    "rating": 4,
-    "note": "",
-    "tags": [
-      "Fiction"
-    ]
-  },
-  {
-    "id": "ender-s-shadow",
-    "title": "Ender's Shadow",
-    "author": "Orson Scott Card",
-    "publisher": "Starscape",
-    "isbn": "9780765342409",
-    "cover": "covers/ender-s-shadow.jpg",
-    "shelf": "read",
-    "progress": 100,
-    "rating": 4,
-    "note": "",
-    "tags": [
-      "Fiction"
     ]
   },
   {
@@ -750,21 +705,6 @@
     "tags": [
       "Productivity",
       "Psychology"
-    ]
-  },
-  {
-    "id": "men-without-women",
-    "title": "Men Without Women",
-    "author": "Haruki Murakami",
-    "publisher": "",
-    "isbn": "9780385689458",
-    "cover": "covers/men-without-women.jpg",
-    "shelf": "to-read",
-    "progress": 0,
-    "rating": null,
-    "note": "",
-    "tags": [
-      "Fiction"
     ]
   }
 ]
