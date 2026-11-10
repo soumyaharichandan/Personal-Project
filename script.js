@@ -1,5 +1,16 @@
 document.getElementById('yr').textContent = new Date().getFullYear();
 
+// Footer "last updated" — derived from the page's own Last-Modified date
+// (GitHub Pages sets this from the file's last commit), so it always
+// reflects reality with no manual upkeep needed.
+(function () {
+  const el = document.getElementById('lastUpdated');
+  if (!el) return;
+  const d = new Date(document.lastModified);
+  if (isNaN(d)) return;
+  el.textContent = 'Updated ' + d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+})();
+
 // Theme toggle
 const root = document.documentElement;
 const btn = document.getElementById('theme');
