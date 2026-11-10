@@ -226,6 +226,11 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .cs-body h2 { font-size: 30px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 14px; }
 .cs-body p { color: var(--muted); font-size: 18px; }
 .cs-body .figure { aspect-ratio: 16/10; margin: 24px -80px 0; }
+/* The -80px bleed above only has room on wide desktop viewports where
+   .wrap's side gutters give it space to overflow into; on tablets
+   (e.g. a 768px iPad) there isn't enough room and it pushes the page
+   wider than the viewport, causing horizontal scroll. */
+@media (max-width: 900px) { .cs-body .figure { margin: 24px 0 0; } }
 .cs-pagination { border-top: 1px solid var(--line); padding: 40px 0 64px; }
 .cs-pagination-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .cs-page-link { display: flex; flex-direction: column; gap: 6px; max-width: 220px; }
@@ -323,7 +328,6 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   .cases .label { grid-column: 1 / -1; }
   .notes a { grid-template-columns: 1fr; gap: 4px; }
   .meta { grid-template-columns: 1fr 1fr; }
-  .cs-body .figure { margin: 24px 0 0; }
   nav { gap: 10px; }
   nav a.nav-link { display: none; }
   .burger-mobile-only { display: block; }
