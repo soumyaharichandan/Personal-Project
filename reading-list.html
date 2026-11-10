@@ -139,7 +139,7 @@
 
       if (!grid) return;
 
-      const PP_KEY = 'pgPerPage:reading-list';
+      const PP_KEY = 'pgPerPage:reading-list:v2';
       let PER_PAGE = 4;
       try { const s = parseInt(localStorage.getItem(PP_KEY), 10); if (s) PER_PAGE = s; } catch (e) {}
 
