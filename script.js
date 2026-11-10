@@ -280,7 +280,18 @@ if (canvas) {
     return `<svg viewBox="0 0 300 180" aria-hidden="true">${paths.map(x => `<path d="${x[0]}" class="${x[1] === 'lite' ? 'soft' : ''}"/>`).join("")}</svg>`;
   }
 
-  const shelfHTML = projects.map((p, i) => {
+  // This shared shelf is used two places: the homepage's "Selected work"
+  // teaser (no search bar, always shows every project) and work.html's
+  // full listing (which has its own search/pagination script that
+  // overwrites this render anyway). On the homepage specifically, cap the
+  // teaser to 2 cards on phone-width screens so it doesn't dominate the
+  // page — the "View all work" link next to the heading covers the rest.
+  const isHomeTeaser = !document.getElementById('skSearch');
+  const homeProjects = (isHomeTeaser && matchMedia('(max-width: 640px)').matches)
+    ? projects.slice(0, 2)
+    : projects;
+
+  const shelfHTML = homeProjects.map((p, i) => {
     const num = String(i + 1).padStart(2, "0");
     seed = 11 + i * 17;
     const paths = sketches[p.sketch]();
