@@ -69,17 +69,6 @@
         <input type="search" class="sk-search" id="libSearch" placeholder="Search books…" aria-label="Search books">
       </div>
       <div class="sk-filter-group">
-        <button type="button" class="sk-filter-pill" id="libShelfBtn" aria-expanded="false" aria-haspopup="true">
-          <span id="libShelfLabel">Shelf</span><span class="sk-filter-caret">⌄</span>
-        </button>
-        <div class="sk-filter-popover" id="libShelfPopover" hidden>
-          <label class="sk-filter-option"><input type="radio" name="libShelf" value="all" checked><span>All shelves</span></label>
-          <label class="sk-filter-option"><input type="radio" name="libShelf" value="read"><span>Read</span></label>
-          <label class="sk-filter-option"><input type="radio" name="libShelf" value="reading"><span>Currently reading</span></label>
-          <label class="sk-filter-option"><input type="radio" name="libShelf" value="to-read"><span>Want to read</span></label>
-        </div>
-      </div>
-      <div class="sk-filter-group">
         <button type="button" class="sk-filter-pill" id="libCatBtn" aria-expanded="false" aria-haspopup="true">
           <span id="libCatLabel">Category</span><span class="sk-filter-caret">⌄</span>
         </button>
@@ -124,9 +113,6 @@
     (function () {
       const grid = document.getElementById('libGrid');
       const searchEl = document.getElementById('libSearch');
-      const shelfBtn = document.getElementById('libShelfBtn');
-      const shelfLabel = document.getElementById('libShelfLabel');
-      const shelfPopover = document.getElementById('libShelfPopover');
       const catBtn = document.getElementById('libCatBtn');
       const catLabel = document.getElementById('libCatLabel');
       const catPopover = document.getElementById('libCatPopover');
@@ -143,20 +129,13 @@
       try { const s = parseInt(localStorage.getItem(PP_KEY), 10); if (s) PER_PAGE = s; } catch (e) {}
 
       let allBooks = [];
-      let shelf = 'all';
       let selectedCats = new Set();
       let currentFiltered = [];
 
-      const TAB_COLOR = { read: '#f0a93f', reading: '#4a9eff', 'to-read': '#9b8ea8' };
-      const SHELF_LABEL_MAP = { all: 'Shelf', read: 'Read', reading: 'Reading', 'to-read': 'Want to read' };
+      const TAB_COLOR = { read: '#f0a93f' };
 
-      function stateLabel(book) {
-        if (book.shelf === 'reading') return '◎ reading';
-        if (book.shelf === 'to-read') return '○ up next';
-        return '✓ read';
-      }
+      function stateLabel() { return '✓ read'; }
       function progressSmallLabel(book) {
-        if (book.shelf === 'to-read') return 'up next';
         if (book.rating) return '★'.repeat(book.rating);
         return '✓ read';
       }
@@ -242,16 +221,14 @@
         const term = (searchEl ? searchEl.value : '').toLowerCase().trim();
         currentFiltered = allBooks.filter(book => {
           const matchTerm = !term || book.title.toLowerCase().includes(term) || book.author.toLowerCase().includes(term);
-          const matchShelf = shelf === 'all' || book.shelf === shelf;
           const matchCat = selectedCats.size === 0 || book.tags.some(t => selectedCats.has(t));
-          return matchTerm && matchShelf && matchCat;
+          return matchTerm && matchCat;
         });
 
         emptyEl.classList.toggle('show', currentFiltered.length === 0);
         grid.classList.toggle('sk-shelf-hidden', currentFiltered.length === 0);
-        clearBtn.hidden = shelf === 'all' && selectedCats.size === 0 && (!searchEl || searchEl.value === '');
+        clearBtn.hidden = selectedCats.size === 0 && (!searchEl || searchEl.value === '');
         pgBar.hidden = currentFiltered.length === 0;
-        shelfLabel.textContent = SHELF_LABEL_MAP[shelf] || 'Shelf';
         catLabel.textContent = selectedCats.size === 0 ? 'Category' : [...selectedCats].join(', ');
 
         pagination.setCount(currentFiltered.length, PER_PAGE);
@@ -270,25 +247,11 @@
 
       const pagination = skPagination(paginationEl, renderPage);
 
-      // Shelf radio
-      shelfBtn.addEventListener('click', () => {
-        const open = !shelfPopover.hidden;
-        shelfPopover.hidden = open;
-        catPopover.hidden = true;
-        shelfBtn.setAttribute('aria-expanded', String(!open));
-        catBtn.setAttribute('aria-expanded', 'false');
-      });
-      shelfPopover.querySelectorAll('input[type=radio]').forEach(r => {
-        r.addEventListener('change', () => { shelf = r.value; query(); });
-      });
-
       // Category checkboxes (populated after fetch)
       catBtn.addEventListener('click', () => {
         const open = !catPopover.hidden;
         catPopover.hidden = open;
-        shelfPopover.hidden = true;
         catBtn.setAttribute('aria-expanded', String(!open));
-        shelfBtn.setAttribute('aria-expanded', 'false');
       });
 
       // Search
@@ -296,17 +259,14 @@
 
       // Clear
       clearBtn.addEventListener('click', () => {
-        shelf = 'all';
         selectedCats.clear();
         searchEl.value = '';
-        shelfPopover.querySelectorAll('input[type=radio]').forEach(r => { r.checked = r.value === 'all'; });
         catPopover.querySelectorAll('input[type=checkbox]').forEach(cb => { cb.checked = false; });
         query();
       });
 
-      // Close popovers on outside click
+      // Close popover on outside click
       document.addEventListener('click', e => {
-        if (!shelfBtn.contains(e.target) && !shelfPopover.contains(e.target)) { shelfPopover.hidden = true; shelfBtn.setAttribute('aria-expanded', 'false'); }
         if (!catBtn.contains(e.target) && !catPopover.contains(e.target)) { catPopover.hidden = true; catBtn.setAttribute('aria-expanded', 'false'); }
       });
 
