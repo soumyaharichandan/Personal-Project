@@ -31,6 +31,8 @@
       .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
     }
     [data-theme="dark"] .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
+    .lib-grid.loading { min-height: 200px; display: flex; align-items: center; justify-content: center; }
+    .lib-loading-text { font-family: var(--mono); font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -59,7 +61,7 @@
     <div class="cs-hero reveal">
       <p class="eyebrow">From Bookshelf</p>
       <h1 class="h2-size">Reading List</h1>
-      <p class="dim" style="max-width:520px;margin-top:12px">47 books tracked on Goodreads — design, psychology, business, and the occasional fiction.</p>
+      <p class="dim" style="max-width:520px;margin-top:12px">49 books tracked on Goodreads — design, psychology, business, and the occasional fiction.</p>
     </div>
 
     <!-- Filter bar -->
@@ -82,422 +84,13 @@
         <button type="button" class="sk-filter-pill" id="libCatBtn" aria-expanded="false" aria-haspopup="true">
           <span id="libCatLabel">Category</span><span class="sk-filter-caret">⌄</span>
         </button>
-        <div class="sk-filter-popover" id="libCatPopover" hidden>
-          <label class="sk-filter-option"><input type="checkbox" value="Design"><span>Design</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Psychology"><span>Psychology</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Business"><span>Business</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Startups"><span>Startups</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Negotiation"><span>Negotiation</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Fiction"><span>Fiction</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Neuroscience"><span>Neuroscience</span></label>
-          <label class="sk-filter-option"><input type="checkbox" value="Productivity"><span>Productivity</span></label>
-        </div>
+        <div class="sk-filter-popover" id="libCatPopover" hidden></div>
       </div>
       <button type="button" class="sk-filter-clear" id="libFilterClear" hidden>✕ Clear</button>
     </div>
 
-    <div class="learn lib-grid" style="margin-top:32px" id="libGrid">
-
-      <!-- ── CURRENTLY READING ── -->
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="0671027034">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>How to Win Friends &amp; Influence People</h3>
-        <p class="learn-src">Dale Carnegie · re-read</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781449342685">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Microinteractions: Designing with Details</h3>
-        <p class="learn-src">Dan Saffer · O'Reilly</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780470229101">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Designing for the Digital Age</h3>
-        <p class="learn-src">Kim Goodwin · Wiley</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780465067107">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>The Design of Everyday Things</h3>
-        <p class="learn-src">Donald A. Norman · Basic Books</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780465051366">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Emotional Design</h3>
-        <p class="learn-src">Donald A. Norman · Basic Books</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780061766084">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Change by Design</h3>
-        <p class="learn-src">Tim Brown · HarperBusiness</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780289798362">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Thoughts on Design</h3>
-        <p class="learn-src">Paul Rand</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780141035819">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Design as Art</h3>
-        <p class="learn-src">Bruno Munari · Penguin Classics</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780385349369">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
-        <h3>Creative Confidence</h3>
-        <p class="learn-src">Tom Kelley &amp; David Kelley · Crown Currency</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span><span>Business</span></div>
-      </article>
-
-      <!-- ── READ ── 5★ first, then 4★, then others, roughly chronological within each -->
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780141918921">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Thinking, Fast and Slow</h3>
-        <p class="learn-src">Daniel Kahneman · Penguin</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Psychology</span><span>Neuroscience</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781118422144">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Evil by Design</h3>
-        <p class="learn-src">Chris Nodder · Wiley</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780470084113">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>About Face 3</h3>
-        <p class="learn-src">Alan Cooper · Wiley</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781581158649">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Brand Thinking and Other Noble Pursuits</h3>
-        <p class="learn-src">Debbie Millman · Allworth</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Design</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9781578518265">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>How Customers Think</h3>
-        <p class="learn-src">Gerald Zaltman · Harvard Business School Press</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Psychology</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9781422121153">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Marketing Metaphoria</h3>
-        <p class="learn-src">Gerald Zaltman · Harvard Business Review Press</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Psychology</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780241336878">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Six Thinking Hats</h3>
-        <p class="learn-src">Edward de Bono · Penguin</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <p class="learn-note"><b>note:</b> Good start for organised thinking — recommend to anyone navigating team conflicts.</p>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f" data-isbn="9780979777707">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Brain Rules</h3>
-        <p class="learn-src">John Medina · Pear Press</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Neuroscience</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9781591847786">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Hooked</h3>
-        <p class="learn-src">Nir Eyal · Portfolio</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780804139298">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Zero to One</h3>
-        <p class="learn-src">Peter Thiel · Crown Currency</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781118858257">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Angel Investing</h3>
-        <p class="learn-src">David S. Rose · Wiley</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780751532715">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Rich Dad Poor Dad</h3>
-        <p class="learn-src">Robert T. Kiyosaki</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781591847847">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>The Art of the Start 2.0</h3>
-        <p class="learn-src">Guy Kawasaki · Portfolio</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781119696414">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>The Mom Test</h3>
-        <p class="learn-src">Rob Fitzpatrick</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781118968079">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Value Proposition Design</h3>
-        <p class="learn-src">Alexander Osterwalder · Wiley</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780596154714">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>slide:ology</h3>
-        <p class="learn-src">Nancy Duarte · O'Reilly</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Design</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780692568491">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Actionable Gamification</h3>
-        <p class="learn-src">Yu-kai Chou · Octalysis Media</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <p class="learn-note"><b>note:</b> New way of thinking beyond points and badges — great insights on motivation design.</p>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Negotiation" style="--tab:#f0a93f" data-isbn="9780062407801">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Never Split the Difference</h3>
-        <p class="learn-src">Chris Voss · Harper Business</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Negotiation</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9788129135728">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Half Girlfriend</h3>
-        <p class="learn-src">Chetan Bhagat · Rupa Publications</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★★</small></div>
-        <div class="stack"><span>Fiction</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780140238303">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Teach Your Child How to Think</h3>
-        <p class="learn-src">Edward de Bono · Penguin</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780976470700">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>The Four Steps to the Epiphany</h3>
-        <p class="learn-src">Steve Blank · K &amp; S Ranch</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781568984650">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Grid Systems</h3>
-        <p class="learn-src">Kimberly Elam · Princeton Architectural Press</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781938895173">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Valuing Start-Ups</h3>
-        <p class="learn-src">Chris Kern</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780316256575">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Presence</h3>
-        <p class="learn-src">Amy Cuddy · Little, Brown Spark</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780812932294">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Losing My Virginity</h3>
-        <p class="learn-src">Richard Branson · Crown Business</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9788129115300">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>2 States</h3>
-        <p class="learn-src">Chetan Bhagat · Rupa &amp; Co</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Fiction</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9780765342409">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Ender's Shadow</h3>
-        <p class="learn-src">Orson Scott Card · Starscape</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★★</small></div>
-        <div class="stack"><span>Fiction</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780123694966">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>The Art of Game Design</h3>
-        <p class="learn-src">Jesse Schell · CRC Press</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>★★★</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780470876411">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Business Model Generation</h3>
-        <p class="learn-src">Alexander Osterwalder</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780596527341">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Information Architecture for the World Wide Web</h3>
-        <p class="learn-src">Peter Morville &amp; Louis Rosenfeld · O'Reilly</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781558606432">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Persuasive Technology</h3>
-        <p class="learn-src">B.J. Fogg · Morgan Kaufmann</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780307887894">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>The Lean Startup</h3>
-        <p class="learn-src">Eric Ries</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Startups</span><span>Business</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f" data-isbn="9780781760034">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
-        <h3>Neuroscience: Exploring the Brain</h3>
-        <p class="learn-src">Mark F. Bear et al. · Lippincott Williams</p>
-        <div class="learn-progress" style="--p:100%" role="img" aria-label="Completed"><span></span><small>✓ read</small></div>
-        <div class="stack"><span>Neuroscience</span></div>
-      </article>
-
-      <!-- ── WANT TO READ ── top picks only -->
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8" data-isbn="9781627790369">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Algorithms to Live By</h3>
-        <p class="learn-src">Brian Christian &amp; Tom Griffiths · Henry Holt</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8" data-isbn="9780345472328">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Mindset</h3>
-        <p class="learn-src">Carol S. Dweck · Random House</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Psychology</span><span>Productivity</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8" data-isbn="9780596008031">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Designing Interfaces</h3>
-        <p class="learn-src">Jenifer Tidwell · O'Reilly</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Design</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8" data-isbn="9780321725523">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Seductive Interaction Design</h3>
-        <p class="learn-src">Stephen P. Anderson · New Riders</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Design</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Negotiation" style="--tab:#9b8ea8" data-isbn="9780140157352">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Getting to Yes</h3>
-        <p class="learn-src">Roger Fisher · Penguin</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Negotiation</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Productivity" style="--tab:#9b8ea8" data-isbn="9781501111105">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Grit</h3>
-        <p class="learn-src">Angela Duckworth · Scribner</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Productivity</span><span>Psychology</span></div>
-      </article>
-
-      <article class="learn-card" data-shelf="to-read" data-cat="Fiction" style="--tab:#9b8ea8" data-isbn="9780385689458">
-        <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
-        <h3>Men Without Women</h3>
-        <p class="learn-src">Haruki Murakami</p>
-        <div class="learn-progress" style="--p:0%" role="img" aria-label="Not started"><span></span><small>up next</small></div>
-        <div class="stack"><span>Fiction</span></div>
-      </article>
-
+    <div class="learn lib-grid loading" style="margin-top:32px" id="libGrid">
+      <p class="lib-loading-text">Loading books…</p>
     </div>
 
     <div class="sk-empty" id="libEmpty">
@@ -509,7 +102,7 @@
       <p>No books match that filter.</p>
     </div>
 
-    <div class="pg-bar" id="libPgBar">
+    <div class="pg-bar" id="libPgBar" hidden>
       <label class="pg-size"><span>Show</span>
         <select id="libPerPage" aria-label="Items per page">
           <option value="4" selected>4</option>
@@ -524,33 +117,11 @@
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
   <script>
-    // Inject book cover images from Open Library
-    (function () {
-      document.querySelectorAll('.learn-card[data-isbn]').forEach(card => {
-        const isbn = card.dataset.isbn;
-        if (!isbn) return;
-        const wrap = document.createElement('div');
-        wrap.className = 'book-cover-wrap';
-        const img = document.createElement('img');
-        img.className = 'book-cover';
-        img.alt = (card.querySelector('h3') || {}).textContent || 'Book cover';
-        img.loading = 'lazy';
-        // Open Library: if no cover exists they return a 1px gif — detect and swap to placeholder
-        img.src = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
-        img.onerror = function () {
-          wrap.innerHTML = '<div class="book-cover-placeholder">📖</div>';
-        };
-        img.onload = function () {
-          if (img.naturalWidth <= 1) {
-            wrap.innerHTML = '<div class="book-cover-placeholder">📖</div>';
-          }
-        };
-        wrap.appendChild(img);
-        card.insertBefore(wrap, card.firstChild);
-      });
-    })();
-  </script>
-  <script>
+    // Reading list is data-driven: all book records live in books.json
+    // (schema: id, title, author, publisher, isbn, cover, shelf, progress,
+    // rating, note, tags[]). This fetches that file once, then every filter
+    // change and pagination "page" click re-queries the in-memory array and
+    // re-renders just the current page's cards from scratch.
     (function () {
       const grid = document.getElementById('libGrid');
       const searchEl = document.getElementById('libSearch');
@@ -564,83 +135,174 @@
       const emptyEl = document.getElementById('libEmpty');
       const pgBar = document.getElementById('libPgBar');
       const perPageSelect = document.getElementById('libPerPage');
+      const paginationEl = document.getElementById('libPagination');
 
       if (!grid) return;
-      const items = [...grid.querySelectorAll('.learn-card')];
+
       const PP_KEY = 'pgPerPage:reading-list';
       let PER_PAGE = 4;
       try { const s = parseInt(localStorage.getItem(PP_KEY), 10); if (s) PER_PAGE = s; } catch (e) {}
 
+      let allBooks = [];
       let shelf = 'all';
       let selectedCats = new Set();
+      let currentFiltered = [];
 
-      function filter() {
-        const term = (searchEl ? searchEl.value : '').toLowerCase().trim();
-        let visible = 0;
-        items.forEach(c => {
-          const title = c.querySelector('h3').textContent.toLowerCase();
-          const src = (c.querySelector('.learn-src') || {}).textContent.toLowerCase();
-          const itemShelf = c.dataset.shelf || '';
-          const itemCats = (c.dataset.cat || '').split(',').map(s => s.trim());
-          const matchTerm = !term || title.includes(term) || src.includes(term);
-          const matchShelf = shelf === 'all' || itemShelf === shelf;
-          const matchCat = selectedCats.size === 0 || itemCats.some(c => selectedCats.has(c));
-          const show = matchTerm && matchShelf && matchCat;
-          c.classList.toggle('sk-hidden', !show);
-          if (show) visible++;
-        });
-        emptyEl.classList.toggle('show', visible === 0);
-        grid.classList.toggle('sk-shelf-hidden', visible === 0);
-        clearBtn.hidden = shelf === 'all' && selectedCats.size === 0 && (!searchEl || searchEl.value === '');
-        if (pgBar) pgBar.hidden = visible === 0;
-        pagination.setCount(visible, PER_PAGE);
-        // update labels
-        shelfLabel.textContent = shelf === 'all' ? 'Shelf' : (shelf === 'read' ? 'Read' : shelf === 'reading' ? 'Reading' : 'Want to read');
-        catLabel.textContent = selectedCats.size === 0 ? 'Category' : [...selectedCats].join(', ');
+      const TAB_COLOR = { read: '#f0a93f', reading: '#4a9eff', 'to-read': '#9b8ea8' };
+      const SHELF_LABEL_MAP = { all: 'Shelf', read: 'Read', reading: 'Reading', 'to-read': 'Want to read' };
+
+      function stateLabel(book) {
+        if (book.shelf === 'reading') return '◎ reading';
+        if (book.shelf === 'to-read') return '○ up next';
+        return '✓ read';
+      }
+      function progressSmallLabel(book) {
+        if (book.shelf === 'to-read') return 'up next';
+        if (book.rating) return '★'.repeat(book.rating);
+        return '✓ read';
       }
 
-      // Shelf radio
-      if (shelfBtn && shelfPopover) {
-        shelfBtn.addEventListener('click', () => {
-          const open = !shelfPopover.hidden;
-          shelfPopover.hidden = open;
-          catPopover.hidden = true;
-          shelfBtn.setAttribute('aria-expanded', String(!open));
-          catBtn.setAttribute('aria-expanded', 'false');
-        });
-        shelfPopover.querySelectorAll('input[type=radio]').forEach(r => {
-          r.addEventListener('change', () => { shelf = r.value; filter(); });
-        });
+      function renderCard(book) {
+        const art = document.createElement('article');
+        art.className = 'learn-card';
+        art.dataset.shelf = book.shelf;
+        art.dataset.cat = book.tags.join(',');
+        art.style.setProperty('--tab', TAB_COLOR[book.shelf] || '#9b8ea8');
+
+        const coverWrap = document.createElement('div');
+        coverWrap.className = 'book-cover-wrap';
+        if (book.isbn) {
+          const img = document.createElement('img');
+          img.className = 'book-cover';
+          img.alt = book.title;
+          img.loading = 'lazy';
+          img.src = book.cover;
+          img.onerror = () => { coverWrap.innerHTML = '<div class="book-cover-placeholder">📖</div>'; };
+          img.onload = () => { if (img.naturalWidth <= 1) coverWrap.innerHTML = '<div class="book-cover-placeholder">📖</div>'; };
+          coverWrap.appendChild(img);
+        } else {
+          coverWrap.innerHTML = '<div class="book-cover-placeholder">📖</div>';
+        }
+        art.appendChild(coverWrap);
+
+        const top = document.createElement('div');
+        top.className = 'learn-top';
+        top.innerHTML = `<span class="learn-kind">Book</span><span class="learn-state next">${stateLabel(book)}</span>`;
+        art.appendChild(top);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = book.title;
+        art.appendChild(h3);
+
+        const src = document.createElement('p');
+        src.className = 'learn-src';
+        src.textContent = [book.author, book.publisher].filter(Boolean).join(' · ');
+        art.appendChild(src);
+
+        const prog = document.createElement('div');
+        prog.className = 'learn-progress';
+        prog.style.setProperty('--p', book.progress + '%');
+        prog.setAttribute('role', 'img');
+        prog.setAttribute('aria-label', book.shelf === 'to-read' ? 'Not started' : 'Completed');
+        prog.innerHTML = `<span></span><small>${progressSmallLabel(book)}</small>`;
+        art.appendChild(prog);
+
+        if (book.note) {
+          const note = document.createElement('p');
+          note.className = 'learn-note';
+          note.innerHTML = `<b>note:</b> ${book.note}`;
+          art.appendChild(note);
+        }
+
+        const stack = document.createElement('div');
+        stack.className = 'stack';
+        stack.innerHTML = book.tags.map(t => `<span>${t}</span>`).join('');
+        art.appendChild(stack);
+
+        return art;
       }
 
-      // Category checkboxes
-      if (catBtn && catPopover) {
-        catBtn.addEventListener('click', () => {
-          const open = !catPopover.hidden;
-          catPopover.hidden = open;
-          shelfPopover.hidden = true;
-          catBtn.setAttribute('aria-expanded', String(!open));
-          shelfBtn.setAttribute('aria-expanded', 'false');
-        });
+      function renderCategoryPopover() {
+        const cats = new Set();
+        allBooks.forEach(b => b.tags.forEach(t => cats.add(t)));
+        catPopover.innerHTML = [...cats].sort().map(c =>
+          `<label class="sk-filter-option"><input type="checkbox" value="${c}"><span>${c}</span></label>`
+        ).join('');
         catPopover.querySelectorAll('input[type=checkbox]').forEach(cb => {
           cb.addEventListener('change', () => {
             if (cb.checked) selectedCats.add(cb.value); else selectedCats.delete(cb.value);
-            filter();
+            query();
           });
         });
       }
 
+      // "query": re-filter the in-memory dataset by current search/shelf/category,
+      // then hand the result to the pagination control, which triggers renderPage
+      // for whichever page is active (defaulting to page 1 on a filter change).
+      function query() {
+        const term = (searchEl ? searchEl.value : '').toLowerCase().trim();
+        currentFiltered = allBooks.filter(book => {
+          const matchTerm = !term || book.title.toLowerCase().includes(term) || book.author.toLowerCase().includes(term);
+          const matchShelf = shelf === 'all' || book.shelf === shelf;
+          const matchCat = selectedCats.size === 0 || book.tags.some(t => selectedCats.has(t));
+          return matchTerm && matchShelf && matchCat;
+        });
+
+        emptyEl.classList.toggle('show', currentFiltered.length === 0);
+        grid.classList.toggle('sk-shelf-hidden', currentFiltered.length === 0);
+        clearBtn.hidden = shelf === 'all' && selectedCats.size === 0 && (!searchEl || searchEl.value === '');
+        pgBar.hidden = currentFiltered.length === 0;
+        shelfLabel.textContent = SHELF_LABEL_MAP[shelf] || 'Shelf';
+        catLabel.textContent = selectedCats.size === 0 ? 'Category' : [...selectedCats].join(', ');
+
+        pagination.setCount(currentFiltered.length, PER_PAGE);
+      }
+
+      // "renderPage": this is the function that fires on every Prev/Next/page-number
+      // click — it slices the already-fetched dataset to just the requested page
+      // and rebuilds only those cards in the DOM.
+      function renderPage(page) {
+        grid.classList.remove('loading');
+        grid.innerHTML = '';
+        const start = (page - 1) * PER_PAGE;
+        const pageItems = currentFiltered.slice(start, start + PER_PAGE);
+        pageItems.forEach(book => grid.appendChild(renderCard(book)));
+      }
+
+      const pagination = skPagination(paginationEl, renderPage);
+
+      // Shelf radio
+      shelfBtn.addEventListener('click', () => {
+        const open = !shelfPopover.hidden;
+        shelfPopover.hidden = open;
+        catPopover.hidden = true;
+        shelfBtn.setAttribute('aria-expanded', String(!open));
+        catBtn.setAttribute('aria-expanded', 'false');
+      });
+      shelfPopover.querySelectorAll('input[type=radio]').forEach(r => {
+        r.addEventListener('change', () => { shelf = r.value; query(); });
+      });
+
+      // Category checkboxes (populated after fetch)
+      catBtn.addEventListener('click', () => {
+        const open = !catPopover.hidden;
+        catPopover.hidden = open;
+        shelfPopover.hidden = true;
+        catBtn.setAttribute('aria-expanded', String(!open));
+        shelfBtn.setAttribute('aria-expanded', 'false');
+      });
+
       // Search
-      if (searchEl) searchEl.addEventListener('input', filter);
+      searchEl.addEventListener('input', query);
 
       // Clear
-      if (clearBtn) clearBtn.addEventListener('click', () => {
+      clearBtn.addEventListener('click', () => {
         shelf = 'all';
         selectedCats.clear();
-        if (searchEl) searchEl.value = '';
+        searchEl.value = '';
         shelfPopover.querySelectorAll('input[type=radio]').forEach(r => { r.checked = r.value === 'all'; });
         catPopover.querySelectorAll('input[type=checkbox]').forEach(cb => { cb.checked = false; });
-        filter();
+        query();
       });
 
       // Close popovers on outside click
@@ -649,21 +311,28 @@
         if (!catBtn.contains(e.target) && !catPopover.contains(e.target)) { catPopover.hidden = true; catBtn.setAttribute('aria-expanded', 'false'); }
       });
 
-      const pagination = skPagination(document.getElementById('libPagination'), page => {
-        const visible = items.filter(c => !c.classList.contains('sk-hidden'));
-        visible.forEach((el, i) => el.classList.toggle('pg-hidden', i < (page - 1) * PER_PAGE || i >= page * PER_PAGE));
-      });
-
       if (perPageSelect) {
         perPageSelect.value = String(PER_PAGE);
         perPageSelect.addEventListener('change', () => {
           PER_PAGE = parseInt(perPageSelect.value, 10) || PER_PAGE;
           try { localStorage.setItem(PP_KEY, String(PER_PAGE)); } catch (e) {}
-          filter();
+          query();
         });
       }
 
-      filter();
+      // Fetch the dataset once, then render
+      fetch('books.json')
+        .then(r => r.json())
+        .then(data => {
+          allBooks = data;
+          grid.classList.remove('loading');
+          renderCategoryPopover();
+          query();
+        })
+        .catch(() => {
+          grid.classList.remove('loading');
+          grid.innerHTML = '<p class="lib-loading-text">Couldn\'t load the reading list — try refreshing.</p>';
+        });
     })();
   </script>
 </body>

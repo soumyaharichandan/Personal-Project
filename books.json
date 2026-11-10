@@ -1,0 +1,770 @@
+[
+  {
+    "id": "how-to-win-friends-influence-people",
+    "title": "How to Win Friends & Influence People",
+    "author": "Dale Carnegie",
+    "publisher": "re-read",
+    "isbn": "0671027034",
+    "cover": "https://covers.openlibrary.org/b/isbn/0671027034-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "microinteractions-designing-with-details",
+    "title": "Microinteractions: Designing with Details",
+    "author": "Dan Saffer",
+    "publisher": "O'Reilly",
+    "isbn": "9781449342685",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781449342685-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "designing-for-the-digital-age",
+    "title": "Designing for the Digital Age",
+    "author": "Kim Goodwin",
+    "publisher": "Wiley",
+    "isbn": "9780470229101",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780470229101-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "the-design-of-everyday-things",
+    "title": "The Design of Everyday Things",
+    "author": "Donald A. Norman",
+    "publisher": "Basic Books",
+    "isbn": "9780465067107",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780465067107-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "emotional-design",
+    "title": "Emotional Design",
+    "author": "Donald A. Norman",
+    "publisher": "Basic Books",
+    "isbn": "9780465051366",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780465051366-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "change-by-design",
+    "title": "Change by Design",
+    "author": "Tim Brown",
+    "publisher": "HarperBusiness",
+    "isbn": "9780061766084",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780061766084-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Business"
+    ]
+  },
+  {
+    "id": "thoughts-on-design",
+    "title": "Thoughts on Design",
+    "author": "Paul Rand",
+    "publisher": "",
+    "isbn": "9780289798362",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780289798362-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "design-as-art",
+    "title": "Design as Art",
+    "author": "Bruno Munari",
+    "publisher": "Penguin Classics",
+    "isbn": "9780141035819",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780141035819-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "creative-confidence",
+    "title": "Creative Confidence",
+    "author": "Tom Kelley & David Kelley",
+    "publisher": "Crown Currency",
+    "isbn": "9780385349369",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780385349369-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Business"
+    ]
+  },
+  {
+    "id": "thinking-fast-and-slow",
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "publisher": "Penguin",
+    "isbn": "9780141918921",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780141918921-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Neuroscience"
+    ]
+  },
+  {
+    "id": "evil-by-design",
+    "title": "Evil by Design",
+    "author": "Chris Nodder",
+    "publisher": "Wiley",
+    "isbn": "9781118422144",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781118422144-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "about-face-3",
+    "title": "About Face 3",
+    "author": "Alan Cooper",
+    "publisher": "Wiley",
+    "isbn": "9780470084113",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780470084113-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "brand-thinking-and-other-noble-pursuits",
+    "title": "Brand Thinking and Other Noble Pursuits",
+    "author": "Debbie Millman",
+    "publisher": "Allworth",
+    "isbn": "9781581158649",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781581158649-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Design",
+      "Business"
+    ]
+  },
+  {
+    "id": "how-customers-think",
+    "title": "How Customers Think",
+    "author": "Gerald Zaltman",
+    "publisher": "Harvard Business School Press",
+    "isbn": "9781578518265",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781578518265-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Business"
+    ]
+  },
+  {
+    "id": "marketing-metaphoria",
+    "title": "Marketing Metaphoria",
+    "author": "Gerald Zaltman",
+    "publisher": "Harvard Business Review Press",
+    "isbn": "9781422121153",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781422121153-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Business"
+    ]
+  },
+  {
+    "id": "six-thinking-hats",
+    "title": "Six Thinking Hats",
+    "author": "Edward de Bono",
+    "publisher": "Penguin",
+    "isbn": "9780241336878",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780241336878-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "Good start for organised thinking \u2014 recommend to anyone navigating team conflicts.",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "brain-rules",
+    "title": "Brain Rules",
+    "author": "John Medina",
+    "publisher": "Pear Press",
+    "isbn": "9780979777707",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780979777707-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Neuroscience",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "hooked",
+    "title": "Hooked",
+    "author": "Nir Eyal",
+    "publisher": "Portfolio",
+    "isbn": "9781591847786",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781591847786-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology",
+      "Business"
+    ]
+  },
+  {
+    "id": "zero-to-one",
+    "title": "Zero to One",
+    "author": "Peter Thiel",
+    "publisher": "Crown Currency",
+    "isbn": "9780804139298",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780804139298-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "angel-investing",
+    "title": "Angel Investing",
+    "author": "David S. Rose",
+    "publisher": "Wiley",
+    "isbn": "9781118858257",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781118858257-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "rich-dad-poor-dad",
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert T. Kiyosaki",
+    "publisher": "",
+    "isbn": "9780751532715",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780751532715-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "id": "the-art-of-the-start-2-0",
+    "title": "The Art of the Start 2.0",
+    "author": "Guy Kawasaki",
+    "publisher": "Portfolio",
+    "isbn": "9781591847847",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781591847847-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "the-mom-test",
+    "title": "The Mom Test",
+    "author": "Rob Fitzpatrick",
+    "publisher": "",
+    "isbn": "9781119696414",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781119696414-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "value-proposition-design",
+    "title": "Value Proposition Design",
+    "author": "Alexander Osterwalder",
+    "publisher": "Wiley",
+    "isbn": "9781118968079",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781118968079-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Design"
+    ]
+  },
+  {
+    "id": "slide-ology",
+    "title": "slide:ology",
+    "author": "Nancy Duarte",
+    "publisher": "O'Reilly",
+    "isbn": "9780596154714",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780596154714-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Design",
+      "Business"
+    ]
+  },
+  {
+    "id": "actionable-gamification",
+    "title": "Actionable Gamification",
+    "author": "Yu-kai Chou",
+    "publisher": "Octalysis Media",
+    "isbn": "9780692568491",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780692568491-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "New way of thinking beyond points and badges \u2014 great insights on motivation design.",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "never-split-the-difference",
+    "title": "Never Split the Difference",
+    "author": "Chris Voss",
+    "publisher": "Harper Business",
+    "isbn": "9780062407801",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780062407801-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Negotiation",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "half-girlfriend",
+    "title": "Half Girlfriend",
+    "author": "Chetan Bhagat",
+    "publisher": "Rupa Publications",
+    "isbn": "9788129135728",
+    "cover": "https://covers.openlibrary.org/b/isbn/9788129135728-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 5,
+    "note": "",
+    "tags": [
+      "Fiction"
+    ]
+  },
+  {
+    "id": "teach-your-child-how-to-think",
+    "title": "Teach Your Child How to Think",
+    "author": "Edward de Bono",
+    "publisher": "Penguin",
+    "isbn": "9780140238303",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780140238303-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "the-four-steps-to-the-epiphany",
+    "title": "The Four Steps to the Epiphany",
+    "author": "Steve Blank",
+    "publisher": "K & S Ranch",
+    "isbn": "9780976470700",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780976470700-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "grid-systems",
+    "title": "Grid Systems",
+    "author": "Kimberly Elam",
+    "publisher": "Princeton Architectural Press",
+    "isbn": "9781568984650",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781568984650-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "valuing-start-ups",
+    "title": "Valuing Start-Ups",
+    "author": "Chris Kern",
+    "publisher": "",
+    "isbn": "9781938895173",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781938895173-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "presence",
+    "title": "Presence",
+    "author": "Amy Cuddy",
+    "publisher": "Little, Brown Spark",
+    "isbn": "9780316256575",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780316256575-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "losing-my-virginity",
+    "title": "Losing My Virginity",
+    "author": "Richard Branson",
+    "publisher": "Crown Business",
+    "isbn": "9780812932294",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780812932294-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "id": "2-states",
+    "title": "2 States",
+    "author": "Chetan Bhagat",
+    "publisher": "Rupa & Co",
+    "isbn": "9788129115300",
+    "cover": "https://covers.openlibrary.org/b/isbn/9788129115300-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Fiction"
+    ]
+  },
+  {
+    "id": "ender-s-shadow",
+    "title": "Ender's Shadow",
+    "author": "Orson Scott Card",
+    "publisher": "Starscape",
+    "isbn": "9780765342409",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780765342409-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 4,
+    "note": "",
+    "tags": [
+      "Fiction"
+    ]
+  },
+  {
+    "id": "the-art-of-game-design",
+    "title": "The Art of Game Design",
+    "author": "Jesse Schell",
+    "publisher": "CRC Press",
+    "isbn": "9780123694966",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780123694966-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": 3,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "business-model-generation",
+    "title": "Business Model Generation",
+    "author": "Alexander Osterwalder",
+    "publisher": "",
+    "isbn": "9780470876411",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780470876411-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "information-architecture-for-the-world-wide-web",
+    "title": "Information Architecture for the World Wide Web",
+    "author": "Peter Morville & Louis Rosenfeld",
+    "publisher": "O'Reilly",
+    "isbn": "9780596527341",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780596527341-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "persuasive-technology",
+    "title": "Persuasive Technology",
+    "author": "B.J. Fogg",
+    "publisher": "Morgan Kaufmann",
+    "isbn": "9781558606432",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781558606432-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "the-lean-startup",
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "publisher": "",
+    "isbn": "9780307887894",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780307887894-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Startups",
+      "Business"
+    ]
+  },
+  {
+    "id": "neuroscience-exploring-the-brain",
+    "title": "Neuroscience: Exploring the Brain",
+    "author": "Mark F. Bear et al.",
+    "publisher": "Lippincott Williams",
+    "isbn": "9780781760034",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780781760034-M.jpg",
+    "shelf": "read",
+    "progress": 100,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Neuroscience"
+    ]
+  },
+  {
+    "id": "algorithms-to-live-by",
+    "title": "Algorithms to Live By",
+    "author": "Brian Christian & Tom Griffiths",
+    "publisher": "Henry Holt",
+    "isbn": "9781627790369",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781627790369-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "mindset",
+    "title": "Mindset",
+    "author": "Carol S. Dweck",
+    "publisher": "Random House",
+    "isbn": "9780345472328",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780345472328-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Psychology",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "designing-interfaces",
+    "title": "Designing Interfaces",
+    "author": "Jenifer Tidwell",
+    "publisher": "O'Reilly",
+    "isbn": "9780596008031",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780596008031-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design"
+    ]
+  },
+  {
+    "id": "seductive-interaction-design",
+    "title": "Seductive Interaction Design",
+    "author": "Stephen P. Anderson",
+    "publisher": "New Riders",
+    "isbn": "9780321725523",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780321725523-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Design",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "getting-to-yes",
+    "title": "Getting to Yes",
+    "author": "Roger Fisher",
+    "publisher": "Penguin",
+    "isbn": "9780140157352",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780140157352-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Negotiation"
+    ]
+  },
+  {
+    "id": "grit",
+    "title": "Grit",
+    "author": "Angela Duckworth",
+    "publisher": "Scribner",
+    "isbn": "9781501111105",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781501111105-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Productivity",
+      "Psychology"
+    ]
+  },
+  {
+    "id": "men-without-women",
+    "title": "Men Without Women",
+    "author": "Haruki Murakami",
+    "publisher": "",
+    "isbn": "9780385689458",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780385689458-M.jpg",
+    "shelf": "to-read",
+    "progress": 0,
+    "rating": null,
+    "note": "",
+    "tags": [
+      "Fiction"
+    ]
+  }
+]
