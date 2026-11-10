@@ -8,6 +8,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .book-cover-wrap {
+      width: 100%; display: flex; justify-content: center;
+      margin-bottom: 14px; min-height: 190px; align-items: flex-end;
+    }
+    .book-cover {
+      width: auto; max-width: 132px; height: 190px;
+      object-fit: cover; border-radius: 3px;
+      box-shadow: 2px 4px 12px rgba(0,0,0,.18);
+      display: block;
+    }
+    .book-cover-placeholder {
+      width: 132px; height: 190px; border-radius: 3px;
+      background: var(--surface, #f4f4f4);
+      border: 1px solid var(--line, #e0e0e0);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; color: var(--muted, #999);
+    }
+    @media (prefers-color-scheme: dark) {
+      .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
+    }
+    [data-theme="dark"] .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
+    #library .learn-card { display: flex; flex-direction: column; }
+  </style>
 </head>
 <body>
   <header class="site">
@@ -138,6 +162,7 @@
       <div class="sec-head reveal"><div><span class="label">From Bookshelf</span><h2>My fav reading list</h2></div><a class="link-animated" href="reading-list.html">View all reading list <span class="arrow">→</span></a></div>
       <div class="learn lib-grid reveal">
         <article class="learn-card" style="--tab:#f0a93f">
+          <div class="book-cover-wrap"><img class="book-cover" src="covers/the-mom-test.jpg" alt="The Mom Test" loading="lazy" onerror="this.closest('.book-cover-wrap').innerHTML='&lt;div class=&quot;book-cover-placeholder&quot;&gt;📖&lt;/div&gt;'"></div>
           <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
           <h3>The Mom Test</h3>
           <p class="learn-src">Rob Fitzpatrick</p>
@@ -145,6 +170,7 @@
           <div class="stack"><span>Startups</span><span>Business</span></div>
         </article>
         <article class="learn-card" style="--tab:#f0a93f">
+          <div class="book-cover-wrap"><img class="book-cover" src="covers/the-art-of-game-design.jpg" alt="The Art of Game Design" loading="lazy" onerror="this.closest('.book-cover-wrap').innerHTML='&lt;div class=&quot;book-cover-placeholder&quot;&gt;📖&lt;/div&gt;'"></div>
           <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
           <h3>The Art of Game Design</h3>
           <p class="learn-src">Jesse Schell · CRC Press</p>
@@ -152,6 +178,7 @@
           <div class="stack"><span>Design</span></div>
         </article>
         <article class="learn-card" style="--tab:#f0a93f">
+          <div class="book-cover-wrap"><img class="book-cover" src="covers/about-face-3.jpg" alt="About Face 3" loading="lazy" onerror="this.closest('.book-cover-wrap').innerHTML='&lt;div class=&quot;book-cover-placeholder&quot;&gt;📖&lt;/div&gt;'"></div>
           <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
           <h3>About Face 3</h3>
           <p class="learn-src">Alan Cooper · Wiley</p>
