@@ -298,7 +298,7 @@ if (canvas) {
     const svg = `<svg class="sk" viewBox="0 0 300 180" aria-hidden="true">${paths.map((x, k) => `<path pathLength="1" class="${x[1] || ""}" style="--d:${(k * 0.06).toFixed(2)}s" d="${x[0]}"/>`).join("")}</svg>`;
 
     const cover = `<div class="sk-page sk-cover" data-label="cover"><div class="sk-face front" role="button" tabindex="0" aria-label="open the sketchbook for ${p.title}">${holes}
-      <div class="sk-inner"><div class="sk-cover-top"><div class="sk-brand"><span class="owner">soumya's</span><span class="word"><span>sketchbook</span></span></div>
+      <div class="sk-inner"><div class="sk-cover-top"><div class="sk-brand"><span class="owner">soumya's</span><span class="word"><span>${p.title}</span></span></div>
       <div class="sk-spec"><b>${num}</b><small>${p.read}</small></div></div>
       <div class="sk-cover-art">${coverSketch(p, i)}</div>
       <div class="sk-band"><span class="t">${p.title}</span><span class="sk-meta">${p.kick}</span>
