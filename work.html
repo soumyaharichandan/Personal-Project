@@ -283,6 +283,7 @@
           if (show) visible++;
         });
         emptyEl.classList.toggle('show', visible === 0);
+        shelf.classList.toggle('sk-shelf-hidden', visible === 0);
         clearBtn.hidden = term === '' && selectedTags.size === 0 && selectedSubstages.size === 0;
         if (pgBar) pgBar.hidden = visible === 0;
         pagination.setCount(visible, PER_PAGE);
