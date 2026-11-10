@@ -512,10 +512,9 @@
     <div class="pg-bar" id="libPgBar">
       <label class="pg-size"><span>Show</span>
         <select id="libPerPage" aria-label="Items per page">
-          <option value="6">6</option>
-          <option value="12" selected>12</option>
+          <option value="12">12</option>
           <option value="24">24</option>
-          <option value="100">All</option>
+          <option value="100" selected>All</option>
         </select>
       </label>
       <nav class="pg-pagination" id="libPagination" aria-label="Pagination" hidden></nav>
@@ -569,7 +568,7 @@
       if (!grid) return;
       const items = [...grid.querySelectorAll('.learn-card')];
       const PP_KEY = 'pgPerPage:reading-list';
-      let PER_PAGE = 12;
+      let PER_PAGE = 100;
       try { const s = parseInt(localStorage.getItem(PP_KEY), 10); if (s) PER_PAGE = s; } catch (e) {}
 
       let shelf = 'all';
