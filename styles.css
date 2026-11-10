@@ -275,7 +275,9 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .learn-intro { color: var(--muted); font-size: 16px; max-width: 560px; margin: -20px 0 32px; }
 .learn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 #learning .learn { grid-template-columns: repeat(2, 1fr); max-width: 760px; }
-.lib-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 340px)); justify-content: start; }
+.lib-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) { .lib-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lib-grid { grid-template-columns: 1fr; } }
 .learn-card {
   position: relative; display: flex; flex-direction: column; gap: 10px;
   padding: 26px 24px 22px; background: var(--card); border: 1px solid var(--line);
