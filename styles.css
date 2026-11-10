@@ -59,6 +59,8 @@ nav a.nav-current { color: var(--fg); font-weight: 600; }
 .burger-panel[hidden] { display: none; }
 .burger-panel a { display: block; padding: 8px 10px; border-radius: 5px; font-family: var(--mono); font-size: 13px; color: var(--fg); }
 .burger-panel a:hover { background: var(--bg); }
+.burger-mobile-only, .burger-divider { display: none; }
+.burger-divider { height: 1px; margin: 6px 2px; background: var(--line); }
 
 /* Hero */
 .hero-art { position: relative; height: clamp(420px, 56vw, 680px); overflow: hidden; background: #fdfdfc; border-bottom: 1px solid var(--line); cursor: none; }
@@ -322,7 +324,10 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
   .notes a { grid-template-columns: 1fr; gap: 4px; }
   .meta { grid-template-columns: 1fr 1fr; }
   .cs-body .figure { margin: 24px 0 0; }
-  nav { gap: 16px; }
+  nav { gap: 10px; }
+  nav a.nav-link { display: none; }
+  .burger-mobile-only { display: block; }
+  .burger-divider { display: block; }
   footer.site-foot .wrap { flex-direction: column; gap: 6px; }
 }
 
