@@ -8,6 +8,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .learn-card { display: flex; flex-direction: column; }
+    .book-cover-wrap {
+      width: 100%; display: flex; justify-content: center;
+      margin-bottom: 14px; min-height: 130px; align-items: flex-end;
+    }
+    .book-cover {
+      width: auto; max-width: 90px; height: 130px;
+      object-fit: cover; border-radius: 3px;
+      box-shadow: 2px 4px 12px rgba(0,0,0,.18);
+      display: block;
+    }
+    .book-cover-placeholder {
+      width: 90px; height: 130px; border-radius: 3px;
+      background: var(--surface, #f4f4f4);
+      border: 1px solid var(--line, #e0e0e0);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: var(--muted, #999);
+    }
+    @media (prefers-color-scheme: dark) {
+      .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
+    }
+    [data-theme="dark"] .book-cover-placeholder { background: #1e1e1e; border-color: #333; }
+  </style>
 </head>
 <body>
   <header class="site">
@@ -76,7 +100,7 @@
 
       <!-- ── CURRENTLY READING ── -->
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="0671027034">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>How to Win Friends &amp; Influence People</h3>
         <p class="learn-src">Dale Carnegie · re-read</p>
@@ -84,7 +108,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781449342685">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Microinteractions: Designing with Details</h3>
         <p class="learn-src">Dan Saffer · O'Reilly</p>
@@ -92,7 +116,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780470229101">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Designing for the Digital Age</h3>
         <p class="learn-src">Kim Goodwin · Wiley</p>
@@ -100,7 +124,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780465067107">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>The Design of Everyday Things</h3>
         <p class="learn-src">Donald A. Norman · Basic Books</p>
@@ -108,7 +132,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780465051366">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Emotional Design</h3>
         <p class="learn-src">Donald A. Norman · Basic Books</p>
@@ -116,7 +140,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780061766084">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Change by Design</h3>
         <p class="learn-src">Tim Brown · HarperBusiness</p>
@@ -124,7 +148,7 @@
         <div class="stack"><span>Design</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780289798362">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Thoughts on Design</h3>
         <p class="learn-src">Paul Rand</p>
@@ -132,7 +156,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780141035819">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Design as Art</h3>
         <p class="learn-src">Bruno Munari · Penguin Classics</p>
@@ -140,7 +164,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780385349369">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">✓ read</span></div>
         <h3>Creative Confidence</h3>
         <p class="learn-src">Tom Kelley &amp; David Kelley · Crown Currency</p>
@@ -150,7 +174,7 @@
 
       <!-- ── READ ── 5★ first, then 4★, then others, roughly chronological within each -->
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780141918921">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Thinking, Fast and Slow</h3>
         <p class="learn-src">Daniel Kahneman · Penguin</p>
@@ -158,7 +182,7 @@
         <div class="stack"><span>Psychology</span><span>Neuroscience</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781118422144">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Evil by Design</h3>
         <p class="learn-src">Chris Nodder · Wiley</p>
@@ -166,7 +190,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780470084113">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>About Face 3</h3>
         <p class="learn-src">Alan Cooper · Wiley</p>
@@ -174,7 +198,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781581158649">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Brand Thinking and Other Noble Pursuits</h3>
         <p class="learn-src">Debbie Millman · Allworth</p>
@@ -182,7 +206,7 @@
         <div class="stack"><span>Design</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9781578518265">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>How Customers Think</h3>
         <p class="learn-src">Gerald Zaltman · Harvard Business School Press</p>
@@ -190,7 +214,7 @@
         <div class="stack"><span>Psychology</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9781422121153">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Marketing Metaphoria</h3>
         <p class="learn-src">Gerald Zaltman · Harvard Business Review Press</p>
@@ -198,7 +222,7 @@
         <div class="stack"><span>Psychology</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780241336878">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Six Thinking Hats</h3>
         <p class="learn-src">Edward de Bono · Penguin</p>
@@ -207,7 +231,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f" data-isbn="9780979777707">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Brain Rules</h3>
         <p class="learn-src">John Medina · Pear Press</p>
@@ -215,7 +239,7 @@
         <div class="stack"><span>Neuroscience</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9781591847786">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Hooked</h3>
         <p class="learn-src">Nir Eyal · Portfolio</p>
@@ -223,7 +247,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780804139298">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Zero to One</h3>
         <p class="learn-src">Peter Thiel · Crown Currency</p>
@@ -231,7 +255,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781118858257">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Angel Investing</h3>
         <p class="learn-src">David S. Rose · Wiley</p>
@@ -239,7 +263,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780751532715">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Rich Dad Poor Dad</h3>
         <p class="learn-src">Robert T. Kiyosaki</p>
@@ -247,7 +271,7 @@
         <div class="stack"><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781591847847">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>The Art of the Start 2.0</h3>
         <p class="learn-src">Guy Kawasaki · Portfolio</p>
@@ -255,7 +279,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781119696414">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>The Mom Test</h3>
         <p class="learn-src">Rob Fitzpatrick</p>
@@ -263,7 +287,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781118968079">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Value Proposition Design</h3>
         <p class="learn-src">Alexander Osterwalder · Wiley</p>
@@ -271,7 +295,7 @@
         <div class="stack"><span>Startups</span><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780596154714">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>slide:ology</h3>
         <p class="learn-src">Nancy Duarte · O'Reilly</p>
@@ -279,7 +303,7 @@
         <div class="stack"><span>Design</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780692568491">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Actionable Gamification</h3>
         <p class="learn-src">Yu-kai Chou · Octalysis Media</p>
@@ -288,7 +312,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Negotiation" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Negotiation" style="--tab:#f0a93f" data-isbn="9780062407801">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Never Split the Difference</h3>
         <p class="learn-src">Chris Voss · Harper Business</p>
@@ -296,7 +320,7 @@
         <div class="stack"><span>Negotiation</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9788129135728">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Half Girlfriend</h3>
         <p class="learn-src">Chetan Bhagat · Rupa Publications</p>
@@ -304,7 +328,7 @@
         <div class="stack"><span>Fiction</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Psychology" style="--tab:#f0a93f" data-isbn="9780140238303">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Teach Your Child How to Think</h3>
         <p class="learn-src">Edward de Bono · Penguin</p>
@@ -312,7 +336,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780976470700">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>The Four Steps to the Epiphany</h3>
         <p class="learn-src">Steve Blank · K &amp; S Ranch</p>
@@ -320,7 +344,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781568984650">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Grid Systems</h3>
         <p class="learn-src">Kimberly Elam · Princeton Architectural Press</p>
@@ -328,7 +352,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9781938895173">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Valuing Start-Ups</h3>
         <p class="learn-src">Chris Kern</p>
@@ -336,7 +360,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780316256575">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Presence</h3>
         <p class="learn-src">Amy Cuddy · Little, Brown Spark</p>
@@ -344,7 +368,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780812932294">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Losing My Virginity</h3>
         <p class="learn-src">Richard Branson · Crown Business</p>
@@ -352,7 +376,7 @@
         <div class="stack"><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9788129115300">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>2 States</h3>
         <p class="learn-src">Chetan Bhagat · Rupa &amp; Co</p>
@@ -360,7 +384,7 @@
         <div class="stack"><span>Fiction</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Fiction" style="--tab:#f0a93f" data-isbn="9780765342409">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Ender's Shadow</h3>
         <p class="learn-src">Orson Scott Card · Starscape</p>
@@ -368,7 +392,7 @@
         <div class="stack"><span>Fiction</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780123694966">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>The Art of Game Design</h3>
         <p class="learn-src">Jesse Schell · CRC Press</p>
@@ -376,7 +400,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Business" style="--tab:#f0a93f" data-isbn="9780470876411">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Business Model Generation</h3>
         <p class="learn-src">Alexander Osterwalder</p>
@@ -384,7 +408,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9780596527341">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Information Architecture for the World Wide Web</h3>
         <p class="learn-src">Peter Morville &amp; Louis Rosenfeld · O'Reilly</p>
@@ -392,7 +416,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Design" style="--tab:#f0a93f" data-isbn="9781558606432">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Persuasive Technology</h3>
         <p class="learn-src">B.J. Fogg · Morgan Kaufmann</p>
@@ -400,7 +424,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Startups" style="--tab:#f0a93f" data-isbn="9780307887894">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>The Lean Startup</h3>
         <p class="learn-src">Eric Ries</p>
@@ -408,7 +432,7 @@
         <div class="stack"><span>Startups</span><span>Business</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f">
+      <article class="learn-card" data-shelf="read" data-cat="Neuroscience" style="--tab:#f0a93f" data-isbn="9780781760034">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state done">✓ read</span></div>
         <h3>Neuroscience: Exploring the Brain</h3>
         <p class="learn-src">Mark F. Bear et al. · Lippincott Williams</p>
@@ -418,7 +442,7 @@
 
       <!-- ── WANT TO READ ── top picks only -->
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8" data-isbn="9781627790369">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Algorithms to Live By</h3>
         <p class="learn-src">Brian Christian &amp; Tom Griffiths · Henry Holt</p>
@@ -426,7 +450,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Psychology" style="--tab:#9b8ea8" data-isbn="9780345472328">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Mindset</h3>
         <p class="learn-src">Carol S. Dweck · Random House</p>
@@ -434,7 +458,7 @@
         <div class="stack"><span>Psychology</span><span>Productivity</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8" data-isbn="9780596008031">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Designing Interfaces</h3>
         <p class="learn-src">Jenifer Tidwell · O'Reilly</p>
@@ -442,7 +466,7 @@
         <div class="stack"><span>Design</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Design" style="--tab:#9b8ea8" data-isbn="9780321725523">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Seductive Interaction Design</h3>
         <p class="learn-src">Stephen P. Anderson · New Riders</p>
@@ -450,7 +474,7 @@
         <div class="stack"><span>Design</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Negotiation" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Negotiation" style="--tab:#9b8ea8" data-isbn="9780140157352">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Getting to Yes</h3>
         <p class="learn-src">Roger Fisher · Penguin</p>
@@ -458,7 +482,7 @@
         <div class="stack"><span>Negotiation</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Productivity" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Productivity" style="--tab:#9b8ea8" data-isbn="9781501111105">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Grit</h3>
         <p class="learn-src">Angela Duckworth · Scribner</p>
@@ -466,7 +490,7 @@
         <div class="stack"><span>Productivity</span><span>Psychology</span></div>
       </article>
 
-      <article class="learn-card" data-shelf="to-read" data-cat="Fiction" style="--tab:#9b8ea8">
+      <article class="learn-card" data-shelf="to-read" data-cat="Fiction" style="--tab:#9b8ea8" data-isbn="9780385689458">
         <div class="learn-top"><span class="learn-kind">Book</span><span class="learn-state next">○ up next</span></div>
         <h3>Men Without Women</h3>
         <p class="learn-src">Haruki Murakami</p>
@@ -500,6 +524,33 @@
 
   <footer class="site-foot"><div class="wrap"><span>© <span id="yr"></span> Soumya Ranjan Harichandan</span><span>Designed &amp; built by me</span></div></footer>
   <script src="script.js"></script>
+  <script>
+    // Inject book cover images from Open Library
+    (function () {
+      document.querySelectorAll('.learn-card[data-isbn]').forEach(card => {
+        const isbn = card.dataset.isbn;
+        if (!isbn) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'book-cover-wrap';
+        const img = document.createElement('img');
+        img.className = 'book-cover';
+        img.alt = (card.querySelector('h3') || {}).textContent || 'Book cover';
+        img.loading = 'lazy';
+        // Open Library: if no cover exists they return a 1px gif — detect and swap to placeholder
+        img.src = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+        img.onerror = function () {
+          wrap.innerHTML = '<div class="book-cover-placeholder">📖</div>';
+        };
+        img.onload = function () {
+          if (img.naturalWidth <= 1) {
+            wrap.innerHTML = '<div class="book-cover-placeholder">📖</div>';
+          }
+        };
+        wrap.appendChild(img);
+        card.insertBefore(wrap, card.firstChild);
+      });
+    })();
+  </script>
   <script>
     (function () {
       const grid = document.getElementById('libGrid');
