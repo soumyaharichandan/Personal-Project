@@ -188,6 +188,16 @@ blockquote span { color: var(--muted); font-size: 14px; }
   font-family: var(--sans); font-size: 14px; color: var(--fg); background: var(--card);
   border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; width: 100%; transition: border-color .2s;
 }
+.cf-field select {
+  padding-right: 34px; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6478' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; background-size: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cf-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2397a0b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); }
+}
+:root[data-theme="dark"] .cf-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2397a0b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); }
 .cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus { outline: none; border-color: var(--accent); }
 .cf-field textarea { resize: vertical; min-height: 96px; font-family: inherit; }
 .cf-radio-group { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
@@ -256,9 +266,16 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 .pg-size { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); flex-shrink: 0; }
 .pg-size select {
   font-family: var(--mono); font-size: 12px; color: var(--fg); background: var(--card);
-  border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px; cursor: pointer; transition: border-color .2s;
+  border: 1px solid var(--line); border-radius: 5px; padding: 6px 28px 6px 10px; cursor: pointer; transition: border-color .2s;
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6478' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 8px center; background-size: 14px;
 }
 .pg-size select:hover, .pg-size select:focus { border-color: var(--accent); outline: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pg-size select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2397a0b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); }
+}
+:root[data-theme="dark"] .pg-size select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2397a0b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); }
 .pg-pagination { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 0; flex-shrink: 0; }
 .pg-pagination[hidden] { display: none; }
 .pg-arrow {
