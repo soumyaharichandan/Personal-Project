@@ -321,7 +321,11 @@ footer.site-foot .wrap { display: flex; justify-content: space-between; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
 @media (max-width: 760px) {
-  .status { grid-template-columns: 1fr 1fr; }
+  /* align-items:end (set above for the desktop 4-col row) bottom-aligns
+     each box, so when "Working as" wraps to 2 lines and "Location"
+     stays on 1, their top labels end up at different heights. Top-align
+     instead on the 2-col mobile layout so the labels sit level. */
+  .status { grid-template-columns: 1fr 1fr; align-items: start; }
   .btn { justify-self: start; grid-column: 1 / -1; }
   .intro, .lab, .quotes { grid-template-columns: 1fr; }
   .cases a { grid-template-columns: 1fr 32px; }
